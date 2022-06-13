@@ -1,0 +1,56 @@
+'estados del pedido
+@startuml
+
+[*]-->listado
+
+state listado{
+
+}
+
+state enviado{
+
+}
+
+state entregado{
+
+}
+
+state cobrado{
+
+}
+
+state facturado{
+
+}
+
+state pospuesto{
+
+}
+
+state registrado{
+
+}
+
+state fork <<fork>>
+state join <<join>>
+
+listado --> enviado
+enviado-->entregado
+
+entregado -->fork
+fork --> enlistado
+fork -->cobrado
+
+enlistado-->join
+cobrado-->join
+
+join -->facturado
+
+facturado-->registrado :registrarFactura()
+
+enviado-->pospuesto :no se entregó en el dia
+pospuesto-->listado :actualizarFecha()
+
+registrado-->[*]
+
+@enduml

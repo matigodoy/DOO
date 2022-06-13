@@ -1,0 +1,28 @@
+'estados del cliente
+@startuml 
+
+[*] --> ingresado
+state ingresado{
+	
+}
+
+
+ingresado --> verificado : buscarCliente(string dni)
+
+
+state verificado{
+
+}
+
+verificado --> registrado :registrarCliente()
+
+state registrado{
+	
+}
+
+
+
+verificado --> [*]
+registrado --> [*] 
+
+@enduml

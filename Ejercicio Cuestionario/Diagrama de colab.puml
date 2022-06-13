@@ -1,0 +1,15 @@
+@startuml
+    allow_mixing
+    actor ":Operadora" as O
+    boundary ":InterfazAdherirServicio" as I
+    control ":ControladorAdherirServicio" as CO
+    collections ":Cliente" as C
+
+    O -> I :1.opcionAdherirServicio()\n4.solicitarDniCliente()\n9.tomarDatosCliente(obj Cliente)\n13.opciónGenerarRecibo()
+    I -> CO :2.opcionAdherirServicio()\n5.buscarCliente(String dni)\n10.RegistrarCliente(obj Cliente)\n14.generarRecibo()
+    CO -> I :3.solicitarDatosCliente()\n8.mostrarCliente()\n12.mensajeAbonarPrimerCuota()\n16.imprimirRecibo()
+    CO -> CO :6.buscarClientePorDni(String dni)\n15. registrarPago()
+    CO --> C :7.mostar(String dni)\n11. new()
+
+
+@enduml

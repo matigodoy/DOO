@@ -1,0 +1,132 @@
+@startuml Clases
+
+class Cliente{
+    -pedido : Pedido
+    -razonSocial:String
+	-direccion:String
+
+
+}
+
+class Persona{
+	-tipoDocumento:String
+	-numeroDocumento:String
+	-nombre:String
+	-apellido:String
+	-telefono:String
+	-direccion:Direccion
+
+}
+
+
+
+
+class Empleado{
+    -cargo:String
+    -salario:Double
+	-distribuidores:ArrayList<Distribuidor>
+
+}
+
+class Distribuidor{
+	-empleado : Empleado
+	-zona:Zona
+}
+
+
+class Direccion{
+    -barrio:Barrio
+    -direccion:String
+
+}
+
+class Barrio{
+	-nombre:String
+	-zona:Zona
+	-direcciones:ArrayList<Direccion>
+
+}
+
+class Zona{
+	-nombre:String
+	-barrios:ArrayList<Barrio>
+
+}
+
+
+class Pedido{
+	-cliente:Cliente
+	-detalles:ArrayList<DetallePedido>
+	-fecha:String
+	-total:Double
+	+posponerPedido(fecha:String)
+
+}
+
+class DetallePedido{
+	-pedido:Pedido
+	-producto:Producto
+	-cantidad:Integer
+	-preciounitario:Double
+
+}
+
+class Producto{
+	-nombre:String
+	-precio:Double
+	+actualizarPrecio()
+
+}
+
+class Factura{
+	'-pedido:Pedido
+	-empleado:Empleado
+	-cliente:Cliente
+	-fecha:String
+	-total:Double
+	+registrarFactura()
+
+
+}
+
+class DetalleFactura{
+	-factura:Factura
+	-producto:Producto
+	-cantidad:Integer
+	-preciounitario:Double
+
+}
+
+class CancelacionPedido{
+	-pedido:Pedido
+	-empleado:Empleado
+	-fecha:String
+	-motivo:String
+
+}
+
+
+
+Persona "1"<|--"*" Empleado
+Empleado o--"*" Distribuidor
+Persona "1"<|-up-"*" Cliente
+Barrio "1"*--"*" Direccion
+Zona "1"*--"*" Barrio
+Direccion "1"-up-"*" Persona
+Pedido "1"--"1" Cliente
+
+DetallePedido o--"*" Producto
+'Factura "1"--"1" Pedido
+Factura "1"--"1" Empleado
+Factura "1"--"1" Cliente
+DetalleFactura "*"--*"1" Factura
+DetallePedido "*"--*"1" Pedido
+DetalleFactura o--"*" Producto
+CancelacionPedido "1"--"1" Pedido
+CancelacionPedido "1"--"1" Empleado
+
+
+
+
+
+@enduml
