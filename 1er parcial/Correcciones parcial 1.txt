@@ -1,0 +1,17 @@
+definir extensiones y casos de uso abstractos con el <<ext>>
+
+doiagrama clases: 
+- Cliente y empleado , es herencia de persona
+- La factura se hace dps del pedido
+- entre pedido y producto, agregar detalle pedido que va con producto
+- distribuidos y empleado es una asociación
+-cqrdinalidad ay barrio y dirección
+
+Diagramas de Transicion:
+Cliente
+	Eliminar las partes de pedido
+
+diagrama secuencia:
+tiempo de actividad en paso 7, el mostrar tiene que devolver algo a la interfaz (con una linea de puntos)
+
+	
