@@ -8,7 +8,7 @@ package edu.ubp.doo.main;
 import com.formdev.flatlaf.FlatLightLaf;
 import edu.ubp.doo.controlador.Controlador;
 import edu.ubp.doo.controlador.PrincipalControlador;
-import edu.ubp.doo.modelo.Alumno;
+import edu.ubp.doo.modelo.Producto;
 import edu.ubp.doo.modelo.Modelo;
 import edu.ubp.doo.vista.FrmPrincipal;
 import edu.ubp.doo.vista.InterfazVista;
@@ -35,7 +35,7 @@ public class Main {
                     System.err.println("Failed to initialize LaF");
                 }
                 //modelo:
-                Modelo modelo = new Alumno();
+                Modelo modelo = new Producto();
                 //vista:
                 InterfazVista vista = FrmPrincipal.getInstancia();
 

@@ -45,9 +45,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements InterfazVista {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mItemAlumnos = new javax.swing.JMenuItem();
-        mItemMaterias = new javax.swing.JMenuItem();
-        mItemInscripciones = new javax.swing.JMenuItem();
+        mItemProductos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mItemAcerca = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
@@ -59,35 +57,15 @@ public class FrmPrincipal extends javax.swing.JFrame implements InterfazVista {
         jMenu1.setText("Gestión");
         jMenu1.setActionCommand("");
 
-        mItemAlumnos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemAlumnos.setText("Alumnos");
-        mItemAlumnos.setActionCommand("");
-        mItemAlumnos.addActionListener(new java.awt.event.ActionListener() {
+        mItemProductos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mItemProductos.setText("Productos");
+        mItemProductos.setActionCommand("");
+        mItemProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemAlumnosActionPerformed(evt);
+                mItemProductosActionPerformed(evt);
             }
         });
-        jMenu1.add(mItemAlumnos);
-
-        mItemMaterias.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemMaterias.setText("Materias");
-        mItemMaterias.setActionCommand("ABMMATERIA");
-        mItemMaterias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemMateriasActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mItemMaterias);
-
-        mItemInscripciones.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        mItemInscripciones.setText("Inscripciones");
-        mItemInscripciones.setActionCommand("");
-        mItemInscripciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mItemInscripcionesActionPerformed(evt);
-            }
-        });
-        jMenu1.add(mItemInscripciones);
+        jMenu1.add(mItemProductos);
 
         jMenuBar1.add(jMenu1);
 
@@ -121,17 +99,9 @@ public class FrmPrincipal extends javax.swing.JFrame implements InterfazVista {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mItemAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemAlumnosActionPerformed
+    private void mItemProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemProductosActionPerformed
         controlador.abmAlumno(controlador);
-    }//GEN-LAST:event_mItemAlumnosActionPerformed
-
-    private void mItemMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemMateriasActionPerformed
-        controlador.abmMateria();
-    }//GEN-LAST:event_mItemMateriasActionPerformed
-
-    private void mItemInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemInscripcionesActionPerformed
-        controlador.abmInscripcion();
-    }//GEN-LAST:event_mItemInscripcionesActionPerformed
+    }//GEN-LAST:event_mItemProductosActionPerformed
 
     @Override
     public void setControlador(Controlador c) {
@@ -166,9 +136,7 @@ public class FrmPrincipal extends javax.swing.JFrame implements InterfazVista {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem mItemAcerca;
-    private javax.swing.JMenuItem mItemAlumnos;
-    private javax.swing.JMenuItem mItemInscripciones;
-    private javax.swing.JMenuItem mItemMaterias;
+    private javax.swing.JMenuItem mItemProductos;
     private javax.swing.JMenuItem mItemSalir;
     // End of variables declaration//GEN-END:variables
 }

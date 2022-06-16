@@ -11,25 +11,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import edu.ubp.doo.dto.ProductoDto;
-import edu.ubp.doo.dto.InscripcionDto;
-import edu.ubp.doo.dto.MateriaDto;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 
 /**
  *
  * @author agustin
  */
-public class AlumnoDaoImp implements AlumnoDao {
+public class ProductoDaoImp implements ProductoDao {
 
-    public AlumnoDaoImp() {
+    public ProductoDaoImp() {
     }
 
     @Override
-    public ProductoDto buscarAlumno(ProductoDto alumno) {
+    public ProductoDto buscarProducto(ProductoDto producto) {
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
@@ -37,30 +33,24 @@ public class AlumnoDaoImp implements AlumnoDao {
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "select legajo, nombre, apellido, fechaNacimiento, sexo "
-                    + "from alumnos where nombre = ? and apellido = ?";
+            String sql = "select id_producto, nombre, precio "
+                    + "from productos where nombre = ?";
             sentencia = con.prepareStatement(sql);
-            sentencia.setString(1, alumno.getNombre());
-            sentencia.setString(2, alumno.getApellido());
+            sentencia.setString(1, producto.getNombre());
 
             rs = sentencia.executeQuery();
 
             String nombre;
-            String apellido;
-            Date fechaNacimiento;
-            String sexo;
-            int legajo;
+            String precio;
+            int id_producto;
 
             while (rs.next()) {
                 nombre = rs.getString("nombre");
-                apellido = rs.getString("apellido");
-                fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento"));
-                sexo = rs.getString("sexo");
-                legajo = rs.getInt("legajo");
-                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                precio = rs.getString("precio");
+                id_producto = rs.getInt("id_producto");
+                producto = new ProductoDto(nombre, Double.parseDouble(precio), id_producto);
             }
-
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             System.err.println(e);
         } finally {
             try {
@@ -70,11 +60,11 @@ public class AlumnoDaoImp implements AlumnoDao {
                 System.err.println(ex);
             }
         }
-        return alumno;
+        return producto;
     }
 
     @Override
-    public List<ProductoDto> listarAlumnos() {
+    public List<ProductoDto> listarProducto() {
         Connection con = null;
         Statement sentencia = null;
         ResultSet rs = null;
@@ -82,31 +72,26 @@ public class AlumnoDaoImp implements AlumnoDao {
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "select nombre, apellido, fechaNacimiento, sexo, legajo "
-                    + "from alumnos order by apellido, nombre";
+            String sql = "select id_producto, nombre, precio "
+                    + "from productos order by nombre";
             sentencia = con.createStatement();
 
             rs = sentencia.executeQuery(sql);
-
-            int id;
+            
             String nombre;
-            String apellido;
-            Date fechaNacimiento;
-            String sexo;
-            int legajo;
+            String precio;
+            int id_producto;
             ProductoDto alumno;
 
             while (rs.next()) {
                 nombre = rs.getString("nombre");
-                apellido = rs.getString("apellido");
-                fechaNacimiento = rs.getString("fechaNacimiento") != null ? new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento")) : null;
-                sexo = rs.getString("sexo");
-                legajo = rs.getInt("legajo");
-                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                precio = rs.getString("precio");
+                id_producto = rs.getInt("id_producto");
+                alumno = new ProductoDto(nombre, Double.parseDouble(precio), id_producto);
                 listaAlumnos.add(alumno);
             }
 
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             System.err.println(e);
         } finally {
             try {
@@ -120,19 +105,17 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public boolean insertarAlumno(ProductoDto alumno) {
+    public boolean insertarProducto(ProductoDto producto) {
         Connection con = null;
         PreparedStatement sentencia = null;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "insert into alumnos (nombre, apellido, fechaNacimiento, sexo) "
-                    + "values(?,?,?,?)";
+            String sql = "insert into productos (nombre, precio) "
+                    + "values(?,?)";
             sentencia = con.prepareStatement(sql);
-            sentencia.setString(1, alumno.getNombre());
-            sentencia.setString(2, alumno.getApellido());
-            sentencia.setString(3, new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(alumno.getFechaNacimiento()));
-            sentencia.setString(4, alumno.getSexo());
+            sentencia.setString(1, producto.getNombre());
+            sentencia.setString(2, Double.toString(producto.getPrecio()) );
 
             int resultado = sentencia.executeUpdate();
 
@@ -150,19 +133,17 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public boolean modificarAlumno(ProductoDto alumno) {
+    public boolean modificarProducto(ProductoDto producto) {
         Connection con = null;
         PreparedStatement sentencia = null;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "update alumnos set nombre=?,apellido=?,fechaNacimiento=?,sexo=? where legajo=?";
+            String sql = "update productos set nombre=?,precio=? where id_producto=?";
             sentencia = con.prepareStatement(sql);
-            sentencia.setString(1, alumno.getNombre());
-            sentencia.setString(2, alumno.getApellido());
-            sentencia.setString(3, new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(alumno.getFechaNacimiento()));
-            sentencia.setString(4, alumno.getSexo());
-            sentencia.setInt(5, alumno.getLegajo());
+            sentencia.setString(1, producto.getNombre());
+            sentencia.setString(2, Double.toString(producto.getPrecio()));
+            sentencia.setInt(3, producto.getId_producto());
 
             int resultado = sentencia.executeUpdate();
 
@@ -180,20 +161,16 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public boolean borrarAlumno(int legajo) {
+    public boolean borrarProducto(int id_producto) {
         Connection con = null;
         PreparedStatement sentencia = null;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "delete from alumnos where legajo = ? "
-                    + "and (select count(i.idMateria) "
-                    + "from inscripcion i "
-                    + "where i.legajo = ?) = 0";
+            String sql = "delete from productos where id_producto = ? ";
             sentencia = con.prepareStatement(sql);
-            sentencia.setInt(1, legajo);
-            sentencia.setInt(2, legajo);
-            
+            sentencia.setInt(1, id_producto);
+
             int resultado = sentencia.executeUpdate();
 
             return (resultado > 0);
@@ -210,7 +187,7 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public ProductoDto buscarAlumno(int legajo) {
+    public ProductoDto buscarProducto(int id_producto) {
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
@@ -218,28 +195,24 @@ public class AlumnoDaoImp implements AlumnoDao {
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "select legajo, nombre, apellido, fechaNacimiento, sexo "
-                    + "from alumnos where legajo = ?";
+            String sql = "select nombre, precio, id_producto "
+                    + "from productos where id_producto = ?";
             sentencia = con.prepareStatement(sql);
-            sentencia.setInt(1, legajo);
+            sentencia.setInt(1, id_producto);
 
             rs = sentencia.executeQuery();
 
             String nombre;
-            String apellido;
-            Date fechaNacimiento;
-            String sexo;
+            String precio;
 
             while (rs.next()) {
                 nombre = rs.getString("nombre");
-                apellido = rs.getString("apellido");
-                fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento"));
-                sexo = rs.getString("sexo");
-                legajo = rs.getInt("legajo");
-                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                precio = rs.getString("precio");
+                id_producto = rs.getInt("id_producto");
+                alumno = new ProductoDto(nombre, Double.parseDouble(precio), id_producto);
             }
 
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             System.err.println(e);
         } finally {
             try {
@@ -253,22 +226,22 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public int mayorLegajo() {
+    public int mayorId_producto() {
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
-        int legajo = -1;
+        int id_producto = -1;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
-            String sql = "select MAX(legajo) "
-                    + "from alumnos";
+            String sql = "select MAX(id_producto) "
+                    + "from productos";
             sentencia = con.prepareStatement(sql);
 
             rs = sentencia.executeQuery();
 
             while (rs.next()) {
-                legajo = rs.getInt(1);
+                id_producto = rs.getInt(1);
             }
 
         } catch (SQLException e) {
@@ -281,89 +254,12 @@ public class AlumnoDaoImp implements AlumnoDao {
                 System.err.println(ex);
             }
         }
-        return legajo;
+        return id_producto;
     }
 
     @Override
-    public List<ProductoDto> listarAlumnosPorCriterio(ProductoDto alumno) {
+    public List<ProductoDto> listarProductoPorCriterio(ProductoDto producto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<MateriaDto> listarMateriasDisponibles(int legajo) {
-        Connection con = null;
-        PreparedStatement sentencia = null;
-        ResultSet rs = null;
-        List<MateriaDto> listaMaterias = new ArrayList<>();
-
-        try {
-            con = ConexionSql.getInstancia().getConnection();
-            String sql = "select m.idMateria, m.nombre, m.descripcion "
-                    + "from materias m "
-                    + "where m.idMateria not in (select i.idMateria "
-                    + "                            from inscripcion i "
-                    + "                            where i.legajo = ?) "
-                    + "order by m.nombre";
-
-            sentencia = con.prepareStatement(sql);
-            sentencia.setInt(1, legajo);
-
-            rs = sentencia.executeQuery();
-
-            int id;
-            String nombre;
-            String descripcion;
-            MateriaDto materia;
-
-            while (rs.next()) {
-                nombre = rs.getString("nombre");
-                descripcion = rs.getString("descripcion");
-                id = rs.getInt("idMateria");
-                materia = new MateriaDto(id, nombre, descripcion);
-                listaMaterias.add(materia);
-            }
-
-        } catch (SQLException e) {
-            System.err.println(e);
-        } finally {
-            try {
-                rs.close();
-                sentencia.close();
-            } catch (SQLException ex) {
-                System.err.println(ex);
-            }
-        }
-        return listaMaterias;
-    }
-
-    @Override
-    public boolean insertarInscripcion(InscripcionDto inscripcion) {
-        Connection con = null;
-        PreparedStatement sentencia = null;
-
-        try {
-            con = ConexionSql.getInstancia().getConnection();
-            String sql = "insert into inscripcion (legajo, idMateria, fecha, observacion) "
-                    + "values(?,?,?,?)";
-            sentencia = con.prepareStatement(sql);
-            sentencia.setInt(1, inscripcion.getAlumno().getLegajo());
-            sentencia.setInt(2, inscripcion.getMateria().getIdMateria());
-            sentencia.setDate(3, new java.sql.Date(inscripcion.getFecha().getTime()));
-            sentencia.setString(4, inscripcion.getObservacion());
-
-            int resultado = sentencia.executeUpdate();
-
-            return (resultado > 0);
-        } catch (SQLException e) {
-            System.err.println(e);
-            return false;
-        } finally {
-            try {
-                sentencia.close();
-            } catch (SQLException ex) {
-                System.err.println(ex);
-            }
-        }
     }
 
 }

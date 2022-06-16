@@ -7,8 +7,6 @@ package edu.ubp.doo.vista;
 
 import edu.ubp.doo.controlador.ProductoControlador;
 import edu.ubp.doo.controlador.Controlador;
-import edu.ubp.doo.controlador.InscripcionControlador;
-import edu.ubp.doo.dto.MateriaDto;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -17,23 +15,23 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author agustin
  */
-public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAbm {
+public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVistaAbm {
 
     private static final long serialVersionUID = 1L;
 
-    private final DefaultTableModel modeloTblAlumnos;
+    private final DefaultTableModel modeloTblProductos;
     private ProductoControlador controlador;
 
     /**
-     * Creates new form FrmAbmAlumno
+     * Creates new form FrmAbmProducto
      *
      * @param parent
      * @param modal
      */
-    public FrmAbmAlumno(java.awt.Frame parent, boolean modal) {
+    public FrmAbmProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.modeloTblAlumnos = (DefaultTableModel) this.tblAlumnos.getModel();
+        this.modeloTblProductos = (DefaultTableModel) this.tblProductos.getModel();
     }
 
     /**
@@ -46,37 +44,34 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAlumnos = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtLegajo = new javax.swing.JFormattedTextField();
+        txtId_producto = new javax.swing.JFormattedTextField();
         txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
-        panelMateriasInscripcion = new javax.swing.JPanel();
-        cmbMaterias = new javax.swing.JComboBox<>();
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        btnInscribir = new javax.swing.JButton();
         lblTotalFilasTabla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alumnos");
         setResizable(false);
 
-        tblAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Legajo", "Nombre", "Apellido"
+                "id_producto", "Nombre", "precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false
@@ -90,12 +85,12 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
                 return canEdit [columnIndex];
             }
         });
-        tblAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblAlumnosMouseClicked(evt);
+                tblProductosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblAlumnos);
+        jScrollPane1.setViewportView(tblProductos);
 
         btnEliminar.setText("Eliminar Seleccion");
         btnEliminar.setActionCommand("");
@@ -107,27 +102,29 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar"));
 
-        jLabel1.setText("Legajo:");
+        jLabel1.setText("Id:");
+        jLabel1.setToolTipText("");
 
         jLabel2.setText("Nombre:");
 
-        jLabel3.setText("Apellido:");
+        jLabel3.setText("Precio:");
+        jLabel3.setToolTipText("");
 
         try {
-            txtLegajo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
+            txtId_producto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtLegajo.setEnabled(false);
-        txtLegajo.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtId_producto.setEnabled(false);
+        txtId_producto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtLegajoKeyPressed(evt);
+                txtId_productoKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtLegajoKeyReleased(evt);
+                txtId_productoKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtLegajoKeyTyped(evt);
+                txtId_productoKeyTyped(evt);
             }
         });
 
@@ -138,28 +135,6 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
                 btnNuevoActionPerformed(evt);
             }
         });
-
-        panelMateriasInscripcion.setBorder(javax.swing.BorderFactory.createTitledBorder("Materia:"));
-        this.panelMateriasInscripcion.setEnabled(false);
-
-        this.cmbMaterias.setEnabled(false);
-
-        javax.swing.GroupLayout panelMateriasInscripcionLayout = new javax.swing.GroupLayout(panelMateriasInscripcion);
-        panelMateriasInscripcion.setLayout(panelMateriasInscripcionLayout);
-        panelMateriasInscripcionLayout.setHorizontalGroup(
-            panelMateriasInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMateriasInscripcionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbMaterias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelMateriasInscripcionLayout.setVerticalGroup(
-            panelMateriasInscripcionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMateriasInscripcionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cmbMaterias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         btnModificar.setText("Modificar");
         btnModificar.setActionCommand("");
@@ -177,42 +152,29 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
             }
         });
 
-        btnInscribir.setText("Inscribir");
-        btnInscribir.setActionCommand("");
-        btnInscribir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInscribirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtLegajo, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(txtNombre)
-                            .addComponent(txtApellido)))
-                    .addComponent(panelMateriasInscripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtId_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                    .addComponent(txtNombre)
+                    .addComponent(txtPrecio))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 262, Short.MAX_VALUE)
                 .addComponent(btnNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInscribir)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -220,25 +182,24 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtLegajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId_producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelMateriasInscripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnModificar)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnInscribir))
+                    .addComponent(btnGuardar))
                 .addContainerGap())
         );
+
+        jLabel3.getAccessibleContext().setAccessibleName("Precio:");
 
         lblTotalFilasTabla.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalFilasTabla.setText("Total filas:");
@@ -275,11 +236,38 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if (this.getTbltblProductos().getSelectedRow() == -1) {
+            imprimeMensaje(new Exception("Debe seleccionar una fila"));
+            return;
+        }
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro desea eliminar ese producto?", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta == JOptionPane.OK_OPTION) {
+            int legajo = Integer.parseInt(modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 0).toString());
+            boolean resultado = controlador.borrar(legajo);
+            if (resultado) {
+                actualizaTabla();
+            } else {
+                imprimeMensaje(new Exception("Ocurrio un error al eliminar el producto"));
+            }
+            limpiaVista();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
+        if (evt.getSource() instanceof JTable) {
+            Integer id_producto = (Integer) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 0);
+            this.getTxtId_producto().setValue(id_producto.toString());
+            this.getTxtNombre().setText((String) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 1));
+            this.getTxtPrecio().setText((String) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 2));
+        } 
+    }//GEN-LAST:event_tblProductosMouseClicked
+
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String nombre = this.getTxtNombre().getText();
-        String apellido = this.getTxtApellido().getText();
-        if (!nombre.equals("") && !apellido.equals("")) {
-            boolean resultado = controlador.guardar(apellido.toUpperCase(), nombre.toUpperCase());
+        String precio = this.getTxtPrecio().getText();
+        if (!nombre.equals("") && !precio.equals("")) {
+            boolean resultado = controlador.guardar(precio, nombre.toUpperCase());
             if (resultado) {
                 actualizaTabla();
             }
@@ -290,15 +278,15 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        if (this.getTblAlumnos().getSelectedRow() == -1) {
+        if (this.getTbltblProductos().getSelectedRow() == -1) {
             imprimeMensaje(new Exception("Debe seleccionar una fila"));
             return;
         }
-        int legAnterior = Integer.parseInt(modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 0).toString());
+        int idAnterior = Integer.parseInt(modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 0).toString());
         String nombre = this.getTxtNombre().getText();
-        String apellido = this.getTxtApellido().getText();
-        if (!nombre.equals("") && !apellido.equals("")) {
-            boolean resultado = controlador.modificar(legAnterior, nombre.toUpperCase(), apellido.toUpperCase());
+        String precio = this.getTxtPrecio().getText();
+        if (!nombre.equals("") && !precio.equals("")) {
+            boolean resultado = controlador.modificar(idAnterior, nombre.toUpperCase(), Double.parseDouble(precio));
             if (resultado) {
                 actualizaTabla();
             }
@@ -308,106 +296,49 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
         }        // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (this.getTblAlumnos().getSelectedRow() == -1) {
-            imprimeMensaje(new Exception("Debe seleccionar una fila"));
-            return;
-        }
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro desea eliminar ese alumno?", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (respuesta == JOptionPane.OK_OPTION) {
-            int legajo = Integer.parseInt(modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 0).toString());
-            boolean resultado = controlador.borrar(legajo);
-            if (resultado) {
-                actualizaTabla();
-            } else {
-                imprimeMensaje(new Exception("Ocurrio un error al eliminar el alumno, es probable que tenga inscripciones asociadas"));
-            }
-            limpiaVista();
-        }
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
-        if (this.getTblAlumnos().getSelectedRow() == -1 || this.cmbMaterias.getItemCount() == 0) {
-            imprimeMensaje(new Exception("Debe haber una fila seleccionada y al menos una materia disponible para la inscripción"));
-            return;
-        }
-        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro desea inscribir al alumno en " + this.getCmbMaterias().getSelectedItem().toString() + "?", "Información", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (respuesta == JOptionPane.OK_OPTION) {
-            Object materia = this.getCmbMaterias().getSelectedItem();
-            int legajo = Integer.parseInt(modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 0).toString());
-            boolean resp = controlador.inscribir(legajo, materia);
-            if (resp) {
-                imprimeMensaje();
-                if (controlador.getCtrlInscripcion() != null) {
-                    ((InscripcionControlador)controlador.getCtrlInscripcion()).cargarTodas();
-                }
-            }
-            limpiaVista();
-        }        
-    }//GEN-LAST:event_btnInscribirActionPerformed
-
-    private void txtLegajoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegajoKeyTyped
-        verificarInputTxt(evt);
-    }//GEN-LAST:event_txtLegajoKeyTyped
-
-    private void txtLegajoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegajoKeyPressed
-        verificarInputTxt(evt);
-    }//GEN-LAST:event_txtLegajoKeyPressed
-
-    private void txtLegajoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLegajoKeyReleased
-        verificarInputTxt(evt);
-    }//GEN-LAST:event_txtLegajoKeyReleased
-
-    private void tblAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAlumnosMouseClicked
-        if (evt.getSource() instanceof JTable) {
-            Integer legajo = (Integer) this.modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 0);
-            this.getTxtLegajo().setValue(legajo.toString());
-            this.getTxtNombre().setText((String) this.modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 1));
-            this.getTxtApellido().setText((String) this.modeloTblAlumnos.getValueAt(this.getTblAlumnos().getSelectedRow(), 2));
-            this.controlador.cargarMateriasDisponibles(legajo, this.modeloTblAlumnos, this.cmbMaterias);
-            this.getCmbMaterias().setEnabled(false);
-            this.getPanelMateriasInscripcion().setEnabled(false);
-            if (this.getCmbMaterias().getItemCount() > 0) {
-                this.getCmbMaterias().setEnabled(true);
-                this.getPanelMateriasInscripcion().setEnabled(true);
-            }
-        } 
-    }//GEN-LAST:event_tblAlumnosMouseClicked
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiaVista();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void txtId_productoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtId_productoKeyTyped
+        verificarInputTxt(evt);
+    }//GEN-LAST:event_txtId_productoKeyTyped
+
+    private void txtId_productoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtId_productoKeyReleased
+        verificarInputTxt(evt);
+    }//GEN-LAST:event_txtId_productoKeyReleased
+
+    private void txtId_productoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtId_productoKeyPressed
+        verificarInputTxt(evt);
+    }//GEN-LAST:event_txtId_productoKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnInscribir;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JComboBox<MateriaDto> cmbMaterias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotalFilasTabla;
-    private javax.swing.JPanel panelMateriasInscripcion;
-    private javax.swing.JTable tblAlumnos;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JFormattedTextField txtLegajo;
+    private javax.swing.JTable tblProductos;
+    private javax.swing.JFormattedTextField txtId_producto;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
-    public DefaultTableModel getModeloTblAlumnos() {
-        return modeloTblAlumnos;
+    public DefaultTableModel getModeloTblProductos() {
+        return modeloTblProductos;
     }
 
     @Override
     public void setControlador(Controlador c) {
         this.controlador = (ProductoControlador) c;
-        this.controlador.cargarTodos(modeloTblAlumnos);
-        this.lblTotalFilasTabla.setText("Total filas: " + this.modeloTblAlumnos.getRowCount());
+        this.controlador.cargarTodos(modeloTblProductos);
+        this.lblTotalFilasTabla.setText("Total filas: " + this.modeloTblProductos.getRowCount());
     }
 
     @Override
@@ -427,42 +358,40 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
 
     @Override
     public void limpiaVista() {
-        this.txtLegajo.setValue(null);
-        this.txtApellido.setText("");
+        this.txtId_producto.setValue(null);
+        this.txtPrecio.setText("");
         this.txtNombre.setText("");
-        this.tblAlumnos.clearSelection();
-        this.panelMateriasInscripcion.setEnabled(false);
-        this.cmbMaterias.setEnabled(false);
+        this.tblProductos.clearSelection();
     }
 
     @Override
     public void actualizaTabla() {
-        controlador.cargarTodos(modeloTblAlumnos);
-        this.lblTotalFilasTabla.setText("Total filas: " + this.modeloTblAlumnos.getRowCount());
+        controlador.cargarTodos(modeloTblProductos);
+        this.lblTotalFilasTabla.setText("Total filas: " + this.modeloTblProductos.getRowCount());
     }
 
-    public javax.swing.JTable getTblAlumnos() {
-        return tblAlumnos;
+    public javax.swing.JTable getTbltblProductos() {
+        return tblProductos;
     }
 
-    public void setTblAlumnos(javax.swing.JTable tblAlumnos) {
-        this.tblAlumnos = tblAlumnos;
+    public void setTblProductos(javax.swing.JTable tblProductos) {
+        this.tblProductos = tblProductos;
     }
 
-    public javax.swing.JTextField getTxtApellido() {
-        return txtApellido;
+    public javax.swing.JTextField getTxtPrecio() {
+        return txtPrecio;
     }
 
-    public void setTxtApellido(javax.swing.JTextField txtApellido) {
-        this.txtApellido = txtApellido;
+    public void setTxtPrecio(javax.swing.JTextField txtPrecio) {
+        this.txtPrecio = txtPrecio;
     }
 
-    public javax.swing.JFormattedTextField getTxtLegajo() {
-        return txtLegajo;
+    public javax.swing.JFormattedTextField getTxtId_producto() {
+        return txtId_producto;
     }
 
-    public void setTxtLegajo(javax.swing.JFormattedTextField txtLegajo) {
-        this.txtLegajo = txtLegajo;
+    public void setTxtId_producto(javax.swing.JFormattedTextField txtId_producto) {
+        this.txtId_producto = txtId_producto;
     }
 
     public javax.swing.JTextField getTxtNombre() {
@@ -473,20 +402,5 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
         this.txtNombre = txtNombre;
     }
 
-    public javax.swing.JComboBox<MateriaDto> getCmbMaterias() {
-        return cmbMaterias;
-    }
-
-    public void setCmbMaterias(javax.swing.JComboBox<MateriaDto> cmbMaterias) {
-        this.cmbMaterias = cmbMaterias;
-    }
-
-    public javax.swing.JPanel getPanelMateriasInscripcion() {
-        return panelMateriasInscripcion;
-    }
-
-    public void setPanelMateriasInscripcion(javax.swing.JPanel panelMateriasInscripcion) {
-        this.panelMateriasInscripcion = panelMateriasInscripcion;
-    }
 
 }

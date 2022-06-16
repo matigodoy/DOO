@@ -6,8 +6,7 @@
 package edu.ubp.doo.controlador;
 
 import edu.ubp.doo.dto.ProductoDto;
-import edu.ubp.doo.dto.MateriaDto;
-import edu.ubp.doo.modelo.Alumno;
+import edu.ubp.doo.modelo.Producto;
 import edu.ubp.doo.modelo.Modelo;
 import java.util.Date;
 import java.util.List;
@@ -17,49 +16,34 @@ import javax.swing.JComboBox;
 
 public class ProductoControlador extends Controlador {
 
-    private Controlador ctrlInscripcion;
-
-    public ProductoControlador(InterfazVistaAbm vista, Modelo modelo, Controlador ctrlInscripcion) {
+    public ProductoControlador(InterfazVistaAbm vista, Modelo modelo) {
         VISTA = vista;
         MODELO = modelo;
-        this.ctrlInscripcion = ctrlInscripcion;
     }
 
     public void cargarTodos(DefaultTableModel modeloTabla) {
         modeloTabla.setRowCount(0);
         modeloTabla.fireTableDataChanged();
-        List<ProductoDto> listadoProductos = ((Alumno) this.MODELO).listar();
-        for (ProductoDto alu : listadoProductos) {
-            modeloTabla.addRow(new Object[]{alu.getLegajo(), alu.getNombre(), alu.getApellido()});
+        List<ProductoDto> listadoProductos = ((Producto) this.MODELO).listar();
+        for (ProductoDto prod : listadoProductos) {
+            modeloTabla.addRow(new Object[]{prod.getId_producto(), prod.getNombre(), prod.getPrecio()});
         }
     }
 
-    public void cargarMateriasDisponibles(int legajo, DefaultTableModel modeloTabla, JComboBox cmbMaterias) {
-        cmbMaterias.removeAllItems();
-        List<MateriaDto> listadoMaterias = ((Alumno) this.MODELO).listarMateriasDisponibles(legajo);
-        for (MateriaDto mat : listadoMaterias) {
-            cmbMaterias.addItem(mat);
-        }
+
+
+    public boolean guardar(String nombre, String precio) {
+        return ((Producto) this.MODELO).guardar(precio, nombre.toUpperCase());
     }
 
-    public boolean guardar(String nombre, String apellido) {
-        return ((Alumno) this.MODELO).guardar(apellido.toUpperCase(), nombre.toUpperCase(), new Date(System.currentTimeMillis()), "");
-    }
-
-    public boolean modificar(int legAnterior, String nombre, String apellido) {
-        return ((Alumno) this.MODELO).modificar(legAnterior, apellido.toUpperCase(), nombre.toUpperCase(), new Date(System.currentTimeMillis()), "");
+    public boolean modificar(int id_producto, String nombre, double precio) {
+        return ((Producto) this.MODELO).modificar(id_producto, nombre.toUpperCase(), "");
     }
 
     public boolean borrar(int legajo) {
-        return ((Alumno) this.MODELO).borrar(legajo);
+        return ((Producto) this.MODELO).borrar(legajo);
     }
 
-    public boolean inscribir(int legajo, Object materiaDto) {
-        return ((Alumno) this.MODELO).guardarInscripcion(legajo, ((MateriaDto) materiaDto).getIdMateria(), new Date(System.currentTimeMillis()), "");
-    }
 
-    public Controlador getCtrlInscripcion() {
-        return ctrlInscripcion;
-    }
 
 }

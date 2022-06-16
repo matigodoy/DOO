@@ -7,67 +7,57 @@ package edu.ubp.doo.modelo;
 
 import edu.ubp.doo.dao.FabricaDao;
 import edu.ubp.doo.dto.ProductoDto;
-import java.util.Date;
 import java.util.List;
-import edu.ubp.doo.dao.AlumnoDao;
-import edu.ubp.doo.dto.InscripcionDto;
-import edu.ubp.doo.dto.MateriaDto;
+import edu.ubp.doo.dao.ProductoDao;
 
 /**
  *
  * @author agustin
  */
-public class Alumno extends Modelo {
+public class Producto extends Modelo {
 
-    private final AlumnoDao alumnoDao;
+    private final ProductoDao productoDao;
 
-    public Alumno() {
-        alumnoDao = (AlumnoDao) FabricaDao.getDao("AlumnoDaoImp");
+    public Producto() {
+        productoDao = (ProductoDao) FabricaDao.getDao("ProductoDaoImp");
     }
 
-    public ProductoDto buscar(String nombre, String apellido) {
-        ProductoDto alumno = (ProductoDto) alumnoDao.buscarAlumno(new ProductoDto(nombre, apellido));
-        return alumno;
+    public ProductoDto buscar(String nombre) {
+        ProductoDto producto = (ProductoDto) productoDao.buscarProducto(new ProductoDto(nombre));
+        return producto;
     }
 
-    public ProductoDto buscar(int legajo) {
-        ProductoDto alumno = (ProductoDto) alumnoDao.buscarAlumno(legajo);
-        return alumno;
+    public ProductoDto buscar(int id_producto) {
+        ProductoDto producto = (ProductoDto) productoDao.buscarProducto(id_producto);
+        return producto;
     }
 
-    public int mayorLegajo() {
-        return alumnoDao.mayorLegajo();
+    public int mayorId_producto() {
+        return productoDao.mayorId_producto();
     }
 
     public List<ProductoDto> listar() {
-        List<ProductoDto> listadoAlumnos = (List<ProductoDto>) alumnoDao.listarAlumnos();
-        return listadoAlumnos;
+        List<ProductoDto> listadoProductos = (List<ProductoDto>) productoDao.listarProducto();
+        return listadoProductos;
     }
 
-    public List<MateriaDto> listarMateriasDisponibles(int legajo) {
-        List<MateriaDto> listadoMaterias = (List<MateriaDto>) alumnoDao.listarMateriasDisponibles(legajo);
-        return listadoMaterias;
-    }
     
-    public boolean guardarInscripcion(int legajo, int idMateria, Date fecha, String observacion) {
-        return alumnoDao.insertarInscripcion(new InscripcionDto(-1, new MateriaDto(idMateria), new ProductoDto(legajo), fecha, observacion));
-    }
-    
-    public boolean guardar(String apellido, String nombre, Date fechaNacimiento, String sexo) {
-        return alumnoDao.insertarAlumno(new ProductoDto(apellido, nombre, fechaNacimiento, sexo, -1));
+    public boolean guardar(String nombre, String Precio) {
+        return productoDao.insertarProducto(new ProductoDto(nombre, Double.parseDouble(Precio), -1));
     }
 
-    public boolean modificar(int legajo, String apellido, String nombre, Date fechaNacimiento, String sexo) {
-        return alumnoDao.modificarAlumno(new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo));
+    public boolean modificar(int id_producto, String nombre, String precio) {
+        return productoDao.modificarProducto(new ProductoDto(nombre, Double.parseDouble(precio), id_producto));
     }
 
-    public boolean borrar(int legajo) {
-        return alumnoDao.borrarAlumno(legajo);
+    public boolean borrar(int id_producto) {
+        return productoDao.borrarProducto(id_producto);
     }
 
+    /*
     @Override
     protected void finalize() throws Throwable {
-        alumnoDao.cerrarConexion();
-    }
+        productoDao.cerrarConexion();
+    }*/
 
 }

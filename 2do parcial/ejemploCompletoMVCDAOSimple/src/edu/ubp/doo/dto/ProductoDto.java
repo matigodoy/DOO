@@ -13,44 +13,28 @@ import java.util.Date;
  */
 public class ProductoDto {
 
-    private String apellido;
     private String nombre;
-    private Date fechaNacimiento;
-    private String sexo;
-    private int legajo;
+    private double precio;
+    private int id_producto;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(int legajo) {
-        this.legajo = legajo;
+    public ProductoDto(int id_producto) {
+        this.id_producto = id_producto;
     }
-
-    public ProductoDto(String apellido, String nombre) {
-        this.apellido = apellido;
+    public ProductoDto(String nombre) {
         this.nombre = nombre;
     }
-
-    public ProductoDto(String apellido, String nombre, Date fechaNacimiento, String sexo, int legajo) {
-        this.apellido = apellido;
+    public ProductoDto(String nombre,  double precio) {
         this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
-        this.sexo = sexo;
-        this.legajo = legajo;
+        this.precio = precio;
     }
 
-    /**
-     * @return the apellido
-     */
-    public String getApellido() {
-        return apellido;
-    }
-
-    /**
-     * @param apellido the apellido to set
-     */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public ProductoDto(String nombre, double precio, int id_producto) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.id_producto = id_producto;
     }
 
     /**
@@ -70,48 +54,34 @@ public class ProductoDto {
     /**
      * @return the fechaNacimiento
      */
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public double getPrecio() {
+        return precio;
     }
 
     /**
-     * @param fechaNacimiento the fechaNacimiento to set
+     * @param precio the precio to set
      */
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    /**
-     * @return the sexo
-     */
-    public String getSexo() {
-        return sexo;
-    }
-
-    /**
-     * @param sexo the sexo to set
-     */
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     /**
      * @return the legajo
      */
-    public int getLegajo() {
-        return legajo;
+    public int getId_producto() {
+        return id_producto;
     }
 
     /**
-     * @param legajo the legajo to set
+     * @param id_producto the producto to set
      */
-    public void setLegajo(int legajo) {
-        this.legajo = legajo;
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
     @Override
     public String toString() {
-        return  "[" + legajo + "] "+ apellido.toUpperCase() + ", " + nombre.toUpperCase();
+        return  "[" + id_producto + "] "+ nombre.toUpperCase();
     }
 
 }
