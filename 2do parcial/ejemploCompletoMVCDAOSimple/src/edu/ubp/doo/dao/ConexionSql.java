@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author agustin
  */
 public final class ConexionSql {
-    private String URL = "jdbc:sqlite:/C:/bdreloca.db";
+    private String URL = "jdbc:sqlite:/C:/Users/Mati_/Desktop/bdreloca.db";
     private Connection connection = null;
     private static ConexionSql instancia = null;
 

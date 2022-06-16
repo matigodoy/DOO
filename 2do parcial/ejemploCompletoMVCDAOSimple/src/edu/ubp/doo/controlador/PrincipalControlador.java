@@ -41,7 +41,7 @@ public class PrincipalControlador extends Controlador {
         vista = new FrmAbmAlumno(null, true);
 
         //controlador:
-        control = new AlumnoControlador(vista, this.MODELO, inscCtrl);
+        control = new ProductoControlador(vista, this.MODELO, inscCtrl);
 
         //configuramos la vista para que pueda enviar las acciones del usuario como eventos al controlador
         vista.setControlador(control);

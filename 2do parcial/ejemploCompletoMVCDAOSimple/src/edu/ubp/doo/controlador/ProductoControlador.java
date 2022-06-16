@@ -5,7 +5,7 @@
  */
 package edu.ubp.doo.controlador;
 
-import edu.ubp.doo.dto.AlumnoDto;
+import edu.ubp.doo.dto.ProductoDto;
 import edu.ubp.doo.dto.MateriaDto;
 import edu.ubp.doo.modelo.Alumno;
 import edu.ubp.doo.modelo.Modelo;
@@ -15,15 +15,11 @@ import javax.swing.table.DefaultTableModel;
 import edu.ubp.doo.vista.InterfazVistaAbm;
 import javax.swing.JComboBox;
 
-/**
- *
- * @author agustin
- */
-public class AlumnoControlador extends Controlador {
+public class ProductoControlador extends Controlador {
 
     private Controlador ctrlInscripcion;
 
-    public AlumnoControlador(InterfazVistaAbm vista, Modelo modelo, Controlador ctrlInscripcion) {
+    public ProductoControlador(InterfazVistaAbm vista, Modelo modelo, Controlador ctrlInscripcion) {
         VISTA = vista;
         MODELO = modelo;
         this.ctrlInscripcion = ctrlInscripcion;
@@ -32,8 +28,8 @@ public class AlumnoControlador extends Controlador {
     public void cargarTodos(DefaultTableModel modeloTabla) {
         modeloTabla.setRowCount(0);
         modeloTabla.fireTableDataChanged();
-        List<AlumnoDto> listadoAlumnos = ((Alumno) this.MODELO).listar();
-        for (AlumnoDto alu : listadoAlumnos) {
+        List<ProductoDto> listadoProductos = ((Alumno) this.MODELO).listar();
+        for (ProductoDto alu : listadoProductos) {
             modeloTabla.addRow(new Object[]{alu.getLegajo(), alu.getNombre(), alu.getApellido()});
         }
     }

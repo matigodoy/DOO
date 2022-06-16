@@ -6,7 +6,7 @@
 package edu.ubp.doo.modelo;
 
 import edu.ubp.doo.dao.FabricaDao;
-import edu.ubp.doo.dto.AlumnoDto;
+import edu.ubp.doo.dto.ProductoDto;
 import java.util.Date;
 import java.util.List;
 import edu.ubp.doo.dao.AlumnoDao;
@@ -25,13 +25,13 @@ public class Alumno extends Modelo {
         alumnoDao = (AlumnoDao) FabricaDao.getDao("AlumnoDaoImp");
     }
 
-    public AlumnoDto buscar(String nombre, String apellido) {
-        AlumnoDto alumno = (AlumnoDto) alumnoDao.buscarAlumno(new AlumnoDto(nombre, apellido));
+    public ProductoDto buscar(String nombre, String apellido) {
+        ProductoDto alumno = (ProductoDto) alumnoDao.buscarAlumno(new ProductoDto(nombre, apellido));
         return alumno;
     }
 
-    public AlumnoDto buscar(int legajo) {
-        AlumnoDto alumno = (AlumnoDto) alumnoDao.buscarAlumno(legajo);
+    public ProductoDto buscar(int legajo) {
+        ProductoDto alumno = (ProductoDto) alumnoDao.buscarAlumno(legajo);
         return alumno;
     }
 
@@ -39,8 +39,8 @@ public class Alumno extends Modelo {
         return alumnoDao.mayorLegajo();
     }
 
-    public List<AlumnoDto> listar() {
-        List<AlumnoDto> listadoAlumnos = (List<AlumnoDto>) alumnoDao.listarAlumnos();
+    public List<ProductoDto> listar() {
+        List<ProductoDto> listadoAlumnos = (List<ProductoDto>) alumnoDao.listarAlumnos();
         return listadoAlumnos;
     }
 
@@ -50,15 +50,15 @@ public class Alumno extends Modelo {
     }
     
     public boolean guardarInscripcion(int legajo, int idMateria, Date fecha, String observacion) {
-        return alumnoDao.insertarInscripcion(new InscripcionDto(-1, new MateriaDto(idMateria), new AlumnoDto(legajo), fecha, observacion));
+        return alumnoDao.insertarInscripcion(new InscripcionDto(-1, new MateriaDto(idMateria), new ProductoDto(legajo), fecha, observacion));
     }
     
     public boolean guardar(String apellido, String nombre, Date fechaNacimiento, String sexo) {
-        return alumnoDao.insertarAlumno(new AlumnoDto(apellido, nombre, fechaNacimiento, sexo, -1));
+        return alumnoDao.insertarAlumno(new ProductoDto(apellido, nombre, fechaNacimiento, sexo, -1));
     }
 
     public boolean modificar(int legajo, String apellido, String nombre, Date fechaNacimiento, String sexo) {
-        return alumnoDao.modificarAlumno(new AlumnoDto(apellido, nombre, fechaNacimiento, sexo, legajo));
+        return alumnoDao.modificarAlumno(new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo));
     }
 
     public boolean borrar(int legajo) {

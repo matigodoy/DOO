@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import edu.ubp.doo.dto.AlumnoDto;
+import edu.ubp.doo.dto.ProductoDto;
 import edu.ubp.doo.dto.InscripcionDto;
 import edu.ubp.doo.dto.MateriaDto;
 import java.text.ParseException;
@@ -29,11 +29,11 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public AlumnoDto buscarAlumno(AlumnoDto alumno) {
+    public ProductoDto buscarAlumno(ProductoDto alumno) {
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
-        AlumnoDto alumnoResult = null;
+        ProductoDto alumnoResult = null;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
@@ -57,7 +57,7 @@ public class AlumnoDaoImp implements AlumnoDao {
                 fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento"));
                 sexo = rs.getString("sexo");
                 legajo = rs.getInt("legajo");
-                alumno = new AlumnoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
             }
 
         } catch (SQLException | ParseException e) {
@@ -74,11 +74,11 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public List<AlumnoDto> listarAlumnos() {
+    public List<ProductoDto> listarAlumnos() {
         Connection con = null;
         Statement sentencia = null;
         ResultSet rs = null;
-        List<AlumnoDto> listaAlumnos = new ArrayList<>();
+        List<ProductoDto> listaAlumnos = new ArrayList<>();
 
         try {
             con = ConexionSql.getInstancia().getConnection();
@@ -94,7 +94,7 @@ public class AlumnoDaoImp implements AlumnoDao {
             Date fechaNacimiento;
             String sexo;
             int legajo;
-            AlumnoDto alumno;
+            ProductoDto alumno;
 
             while (rs.next()) {
                 nombre = rs.getString("nombre");
@@ -102,7 +102,7 @@ public class AlumnoDaoImp implements AlumnoDao {
                 fechaNacimiento = rs.getString("fechaNacimiento") != null ? new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento")) : null;
                 sexo = rs.getString("sexo");
                 legajo = rs.getInt("legajo");
-                alumno = new AlumnoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
                 listaAlumnos.add(alumno);
             }
 
@@ -120,7 +120,7 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public boolean insertarAlumno(AlumnoDto alumno) {
+    public boolean insertarAlumno(ProductoDto alumno) {
         Connection con = null;
         PreparedStatement sentencia = null;
 
@@ -150,7 +150,7 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public boolean modificarAlumno(AlumnoDto alumno) {
+    public boolean modificarAlumno(ProductoDto alumno) {
         Connection con = null;
         PreparedStatement sentencia = null;
 
@@ -210,11 +210,11 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public AlumnoDto buscarAlumno(int legajo) {
+    public ProductoDto buscarAlumno(int legajo) {
         Connection con = null;
         PreparedStatement sentencia = null;
         ResultSet rs = null;
-        AlumnoDto alumno = null;
+        ProductoDto alumno = null;
 
         try {
             con = ConexionSql.getInstancia().getConnection();
@@ -236,7 +236,7 @@ public class AlumnoDaoImp implements AlumnoDao {
                 fechaNacimiento = new SimpleDateFormat("yyyy-MM-dd").parse(rs.getString("fechaNacimiento"));
                 sexo = rs.getString("sexo");
                 legajo = rs.getInt("legajo");
-                alumno = new AlumnoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
+                alumno = new ProductoDto(apellido, nombre, fechaNacimiento, sexo, legajo);
             }
 
         } catch (SQLException | ParseException e) {
@@ -285,7 +285,7 @@ public class AlumnoDaoImp implements AlumnoDao {
     }
 
     @Override
-    public List<AlumnoDto> listarAlumnosPorCriterio(AlumnoDto alumno) {
+    public List<ProductoDto> listarAlumnosPorCriterio(ProductoDto alumno) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

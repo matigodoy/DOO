@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author agustin
  */
-public class AlumnoDto {
+public class ProductoDto {
 
     private String apellido;
     private String nombre;
@@ -19,19 +19,19 @@ public class AlumnoDto {
     private String sexo;
     private int legajo;
 
-    public AlumnoDto() {
+    public ProductoDto() {
     }
 
-    public AlumnoDto(int legajo) {
+    public ProductoDto(int legajo) {
         this.legajo = legajo;
     }
 
-    public AlumnoDto(String apellido, String nombre) {
+    public ProductoDto(String apellido, String nombre) {
         this.apellido = apellido;
         this.nombre = nombre;
     }
 
-    public AlumnoDto(String apellido, String nombre, Date fechaNacimiento, String sexo, int legajo) {
+    public ProductoDto(String apellido, String nombre, Date fechaNacimiento, String sexo, int legajo) {
         this.apellido = apellido;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;

@@ -5,7 +5,7 @@
  */
 package edu.ubp.doo.vista;
 
-import edu.ubp.doo.controlador.AlumnoControlador;
+import edu.ubp.doo.controlador.ProductoControlador;
 import edu.ubp.doo.controlador.Controlador;
 import edu.ubp.doo.controlador.InscripcionControlador;
 import edu.ubp.doo.dto.MateriaDto;
@@ -22,7 +22,7 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
     private static final long serialVersionUID = 1L;
 
     private final DefaultTableModel modeloTblAlumnos;
-    private AlumnoControlador controlador;
+    private ProductoControlador controlador;
 
     /**
      * Creates new form FrmAbmAlumno
@@ -405,7 +405,7 @@ public class FrmAbmAlumno extends javax.swing.JDialog implements InterfazVistaAb
 
     @Override
     public void setControlador(Controlador c) {
-        this.controlador = (AlumnoControlador) c;
+        this.controlador = (ProductoControlador) c;
         this.controlador.cargarTodos(modeloTblAlumnos);
         this.lblTotalFilasTabla.setText("Total filas: " + this.modeloTblAlumnos.getRowCount());
     }

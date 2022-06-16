@@ -6,7 +6,7 @@
 
 package edu.ubp.doo.dao;
 
-import edu.ubp.doo.dto.AlumnoDto;
+import edu.ubp.doo.dto.ProductoDto;
 import edu.ubp.doo.dto.InscripcionDto;
 import edu.ubp.doo.dto.MateriaDto;
 import java.util.List;
@@ -17,19 +17,19 @@ import java.util.List;
  */
 public interface AlumnoDao extends Dao {
     
-     AlumnoDto buscarAlumno(AlumnoDto alumno);
+     ProductoDto buscarAlumno(ProductoDto alumno);
      
-     AlumnoDto buscarAlumno(int legajo);
+     ProductoDto buscarAlumno(int legajo);
     
-     List<AlumnoDto> listarAlumnosPorCriterio(AlumnoDto alumno);
+     List<ProductoDto> listarAlumnosPorCriterio(ProductoDto alumno);
      
-     List<AlumnoDto> listarAlumnos();
+     List<ProductoDto> listarAlumnos();
      
      int mayorLegajo();
      
-     boolean insertarAlumno(AlumnoDto alumno);
+     boolean insertarAlumno(ProductoDto alumno);
      
-     boolean modificarAlumno(AlumnoDto alumno);
+     boolean modificarAlumno(ProductoDto alumno);
      
      boolean borrarAlumno(int legajo);
      
