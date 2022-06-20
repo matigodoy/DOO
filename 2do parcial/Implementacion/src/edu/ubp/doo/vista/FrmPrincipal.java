@@ -130,7 +130,8 @@ public class FrmPrincipal extends javax.swing.JFrame implements InterfazVista {
         JOptionPane.showMessageDialog(this, "<html>Desarrollado por:<br><br>"
                 + "- De Aragón, Juan Manuel<br>"
                 + "- Godoy Cabrera, Lucas Matias<br>"
-                + "- Moyano Gomez, Lucas Manuel </html>", "Créditos", JOptionPane.INFORMATION_MESSAGE);
+                + "- Moyano Gomez, Lucas Manuel <br>"
+                + "- Oliveto Olariaga, Ignacio Jesús</html>", "Créditos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_mItemAcercaActionPerformed
 
     @Override
