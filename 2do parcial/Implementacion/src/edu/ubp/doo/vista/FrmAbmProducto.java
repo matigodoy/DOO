@@ -52,14 +52,14 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
         jLabel3 = new javax.swing.JLabel();
         txtId_producto = new javax.swing.JFormattedTextField();
         txtNombre = new javax.swing.JTextField();
-        txtPrecio = new javax.swing.JTextField();
         btnNuevo = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
+        txtPrecio = new javax.swing.JFormattedTextField();
         lblTotalFilasTabla = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Alumnos");
+        setTitle("ABM Productos");
         setResizable(false);
 
         tblProductos.setModel(new javax.swing.table.DefaultTableModel(
@@ -159,17 +159,21 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtId_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(txtNombre)
-                    .addComponent(txtPrecio))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(3, 3, 3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtId_producto, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(txtNombre)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 262, Short.MAX_VALUE)
+                .addGap(0, 263, Short.MAX_VALUE)
                 .addComponent(btnNuevo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGuardar)
@@ -189,17 +193,15 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNuevo)
                     .addComponent(btnModificar)
                     .addComponent(btnGuardar))
                 .addContainerGap())
         );
-
-        jLabel3.getAccessibleContext().setAccessibleName("Precio:");
 
         lblTotalFilasTabla.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalFilasTabla.setText("Total filas:");
@@ -257,9 +259,11 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
     private void tblProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductosMouseClicked
         if (evt.getSource() instanceof JTable) {
             Integer id_producto = (Integer) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 0);
+            Double precio = (Double) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 2);
+            
             this.getTxtId_producto().setValue(id_producto.toString());
             this.getTxtNombre().setText((String) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 1));
-            this.getTxtPrecio().setText((String) this.modeloTblProductos.getValueAt(this.getTbltblProductos().getSelectedRow(), 2));
+            this.getTxtPrecio().setValue(precio.toString());
         } 
     }//GEN-LAST:event_tblProductosMouseClicked
 
@@ -267,7 +271,7 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
         String nombre = this.getTxtNombre().getText();
         String precio = this.getTxtPrecio().getText();
         if (!nombre.equals("") && !precio.equals("")) {
-            boolean resultado = controlador.guardar(precio, nombre.toUpperCase());
+            boolean resultado = controlador.guardar(precio, nombre);
             if (resultado) {
                 actualizaTabla();
             }
@@ -286,7 +290,7 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
         String nombre = this.getTxtNombre().getText();
         String precio = this.getTxtPrecio().getText();
         if (!nombre.equals("") && !precio.equals("")) {
-            boolean resultado = controlador.modificar(idAnterior, nombre.toUpperCase(), Double.parseDouble(precio));
+            boolean resultado = controlador.modificar(idAnterior, nombre, Double.parseDouble(precio));
             if (resultado) {
                 actualizaTabla();
             }
@@ -327,7 +331,7 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
     private javax.swing.JTable tblProductos;
     private javax.swing.JFormattedTextField txtId_producto;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JFormattedTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 
     public DefaultTableModel getModeloTblProductos() {
@@ -378,11 +382,11 @@ public class FrmAbmProducto extends javax.swing.JDialog implements InterfazVista
         this.tblProductos = tblProductos;
     }
 
-    public javax.swing.JTextField getTxtPrecio() {
+    public javax.swing.JFormattedTextField getTxtPrecio() {
         return txtPrecio;
     }
 
-    public void setTxtPrecio(javax.swing.JTextField txtPrecio) {
+    public void setTxtPrecio(javax.swing.JFormattedTextField txtPrecio) {
         this.txtPrecio = txtPrecio;
     }
 

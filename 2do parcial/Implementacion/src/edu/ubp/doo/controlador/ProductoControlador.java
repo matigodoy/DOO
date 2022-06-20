@@ -37,7 +37,7 @@ public class ProductoControlador extends Controlador {
     }
 
     public boolean modificar(int id_producto, String nombre, double precio) {
-        return ((Producto) this.MODELO).modificar(id_producto, nombre.toUpperCase(), "");
+        return ((Producto) this.MODELO).modificar(id_producto, nombre, precio);
     }
 
     public boolean borrar(int legajo) {

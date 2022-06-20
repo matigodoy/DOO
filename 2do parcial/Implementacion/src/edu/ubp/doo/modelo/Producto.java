@@ -46,8 +46,8 @@ public class Producto extends Modelo {
         return productoDao.insertarProducto(new ProductoDto(nombre, Double.parseDouble(Precio), -1));
     }
 
-    public boolean modificar(int id_producto, String nombre, String precio) {
-        return productoDao.modificarProducto(new ProductoDto(nombre, Double.parseDouble(precio), id_producto));
+    public boolean modificar(int id_producto, String nombre, Double precio) {
+        return productoDao.modificarProducto(new ProductoDto(nombre, precio, id_producto));
     }
 
     public boolean borrar(int id_producto) {
