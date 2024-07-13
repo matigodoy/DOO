@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\models\\iproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:models\\iproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IProducto.cs",
+              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\IProducto.cs",
+              "RelativeDocumentMoniker": "Models\\IProducto.cs",
+              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\IProducto.cs",
+              "RelativeToolTip": "Models\\IProducto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T19:27:01.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\Producto.cs",
+              "RelativeDocumentMoniker": "Models\\Producto.cs",
+              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\Producto.cs",
+              "RelativeToolTip": "Models\\Producto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:34:20.924Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Home.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Home.cs",
-              "RelativeDocumentMoniker": "Home.cs",
-              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Home.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Home.cs [Dise\u00F1o]",
+              "Title": "Home.cs",
+              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "Views\\Home.cs",
+              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
+              "RelativeToolTip": "Views\\Home.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T21:30:45.279Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2024-07-08T21:44:11.888Z",
+              "EditorCaption": ""
             }
           ]
         }
