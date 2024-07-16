@@ -1,17 +1,42 @@
+using DOO.Dao;
+using DOO.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using System.Reflection;
+
 namespace DOO
 {
     internal static class Program
     {
+        public static IServiceProvider ServiceProvider { get; private set; }
+
+        private static string _dbFileName = "productos.db";
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+            ServiceProvider = services.BuildServiceProvider();
+
             ApplicationConfiguration.Initialize();
             Application.Run(new Home());
+        }
+
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<DatabaseDbContext>(options =>
+                options.UseSqlite(connectionString: @$"Filename={_dbFileName}", sqliteOptionsAction: op =>
+                {
+                    op.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+                }));
+
+            services.AddScoped<IProducto, ProductosStore>();
+            services.AddScoped<ProductosStore>();
         }
     }
 }

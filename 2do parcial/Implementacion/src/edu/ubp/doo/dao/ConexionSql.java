@@ -13,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author De Aragón, Godoy, Moyano
  */
-public final class ConexionSql {
+public final class      ConexionSql {
     private String URL = "jdbc:sqlite:/C:/Users/Mati_/Desktop/bdreloca.db";
     private Connection connection = null;
     private static ConexionSql instancia = null;

@@ -28,58 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
-            label1 = new Label();
+            dataGridView1 = new DataGridView();
+            txtProductoId = new TextBox();
+            btnGetProducto = new Button();
+            txtNombre = new TextBox();
+            btnInsertProducto = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // dataGridView1
             // 
-            button1.Location = new Point(621, 502);
-            button1.Name = "button1";
-            button1.Size = new Size(219, 46);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(39, 490);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(858, 181);
+            dataGridView1.TabIndex = 0;
             // 
-            // textBox1
+            // txtProductoId
             // 
-            textBox1.Location = new Point(167, 260);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(416, 23);
-            textBox1.TabIndex = 1;
+            txtProductoId.Location = new Point(139, 157);
+            txtProductoId.Name = "txtProductoId";
+            txtProductoId.Size = new Size(410, 27);
+            txtProductoId.TabIndex = 1;
             // 
-            // label1
+            // btnGetProducto
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(167, 242);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Ingresa tu peso";
-            label1.Click += label1_Click;
+            btnGetProducto.Location = new Point(604, 153);
+            btnGetProducto.Name = "btnGetProducto";
+            btnGetProducto.Size = new Size(283, 35);
+            btnGetProducto.TabIndex = 2;
+            btnGetProducto.Text = "Obtener";
+            btnGetProducto.UseVisualStyleBackColor = true;
+            btnGetProducto.Click += btnGetProducto_Click_1;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(100, 307);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(493, 27);
+            txtNombre.TabIndex = 3;
+            // 
+            // btnInsertProducto
+            // 
+            btnInsertProducto.Location = new Point(615, 306);
+            btnInsertProducto.Name = "btnInsertProducto";
+            btnInsertProducto.Size = new Size(94, 29);
+            btnInsertProducto.TabIndex = 4;
+            btnInsertProducto.Text = "Crear";
+            btnInsertProducto.UseVisualStyleBackColor = true;
+            btnInsertProducto.Click += btnInsertProducto_Click;
             // 
             // Home
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(852, 560);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
-            Margin = new Padding(3, 2, 3, 2);
+            ClientSize = new Size(974, 747);
+            Controls.Add(btnInsertProducto);
+            Controls.Add(txtNombre);
+            Controls.Add(btnGetProducto);
+            Controls.Add(txtProductoId);
+            Controls.Add(dataGridView1);
             Name = "Home";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private TextBox textBox1;
-        private Label label1;
+        private DataGridView dataGridView1;
+        private TextBox txtProductoId;
+        private Button btnGetProducto;
+        private TextBox txtNombre;
+        private Button btnInsertProducto;
     }
 }
