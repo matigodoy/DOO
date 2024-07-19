@@ -31,6 +31,12 @@ namespace DOO
 
         private void btnGetProducto_Click_1(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtProductoId.Text))
+            {
+                MessageBox.Show("Ingrese un id de producto");
+                return;
+            }
+
             int id = int.Parse(txtProductoId.Text);
             var producto = _productosStore.GetProducto(id);
 

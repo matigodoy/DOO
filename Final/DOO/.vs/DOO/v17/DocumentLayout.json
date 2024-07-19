@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:views\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:views\\home.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\models\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:models\\singleton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\dao\\iproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:dao\\iproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|solutionrelative:models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD540D61-CF19-40B8-A01D-EB507D8B7292}|DOO.csproj|c:\\users\\mati\\documents\\github\\doo\\final\\doo\\dao\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,15 +42,29 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.cs",
+              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
+              "RelativeDocumentMoniker": "Views\\Home.cs",
+              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
+              "RelativeToolTip": "Views\\Home.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAAwBUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T00:15:41.465Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Home.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.Designer.cs",
               "RelativeDocumentMoniker": "Views\\Home.Designer.cs",
@@ -69,27 +83,13 @@
               "RelativeDocumentMoniker": "Models\\Singleton.cs",
               "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\Singleton.cs",
               "RelativeToolTip": "Models\\Singleton.cs",
-              "ViewState": "AQIAADUAAAAAAAAAAAA+wD8AAAATAAAA",
+              "ViewState": "AQIAACgAAAAAAAAAAAAAADUAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T00:37:16.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T00:37:16.367Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Home.cs",
-              "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
-              "RelativeDocumentMoniker": "Views\\Home.cs",
-              "ToolTip": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
-              "RelativeToolTip": "Views\\Home.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAUwD0AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T00:15:41.465Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Home.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Views\\Home.cs",
               "RelativeDocumentMoniker": "Views\\Home.cs",
@@ -101,7 +101,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -109,8 +109,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAQwAsAAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T00:15:24.294Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-16T00:15:24.294Z"
             },
             {
               "$type": "Document",
@@ -122,12 +121,11 @@
               "RelativeToolTip": "Dao\\Database.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-15T23:56:25.713Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-15T23:56:25.713Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "IProducto.cs",
               "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Dao\\IProducto.cs",
               "RelativeDocumentMoniker": "Dao\\IProducto.cs",
@@ -135,12 +133,11 @@
               "RelativeToolTip": "Dao\\IProducto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwBAAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T19:27:01.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-13T19:27:01.829Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Producto.cs",
               "DocumentMoniker": "C:\\Users\\Mati\\Documents\\GitHub\\DOO\\Final\\DOO\\Models\\Producto.cs",
               "RelativeDocumentMoniker": "Models\\Producto.cs",
@@ -148,8 +145,7 @@
               "RelativeToolTip": "Models\\Producto.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-12T19:34:20.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-12T19:34:20.924Z"
             }
           ]
         }
