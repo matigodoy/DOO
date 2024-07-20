@@ -22,6 +22,8 @@ namespace DOO
             var services = new ServiceCollection();
             ConfigureServices(services);
             ServiceProvider = services.BuildServiceProvider();
+            DatabaseDbContext juan = new DatabaseDbContext();
+            juan.Database.EnsureCreated();
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Home());
