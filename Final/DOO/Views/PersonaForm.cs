@@ -108,7 +108,8 @@ namespace DOO.Views
                 p.TipoDocumento,
                 p.Telefono,
                 Direccion_Barrio = p.Direccion.Barrio.Nombre,
-                Direccion_Calle = p.Direccion.Calle
+                Direccion_Calle = p.Direccion.Calle,
+                Direccion_Zona = p.Direccion.Barrio.Zona,
             }).ToList();
 
             dataGridView1.DataSource = personaDisplayList;
