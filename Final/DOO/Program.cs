@@ -1,5 +1,6 @@
 using DOO.Dao;
 using DOO.Models;
+using DOO.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -27,6 +28,7 @@ namespace DOO
 
             ApplicationConfiguration.Initialize();
             Application.Run(new Home());
+            Application.Run(new PersonaForm());
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -39,6 +41,8 @@ namespace DOO
 
             services.AddScoped<IProducto, ProductosStore>();
             services.AddScoped<ProductosStore>();
+            services.AddScoped<IPersona, PersonaDB>();
+            services.AddScoped<PersonaDB>();
         }
     }
 }
