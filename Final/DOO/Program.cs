@@ -43,6 +43,7 @@ namespace DOO
             services.AddScoped<ProductosStore>();
             services.AddScoped<IPersona, PersonaDB>();
             services.AddScoped<PersonaDB>();
+            services.AddScoped<Direccion>();
         }
     }
 }

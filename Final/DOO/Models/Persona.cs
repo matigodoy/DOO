@@ -8,5 +8,6 @@ public class Persona
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public string Telefono { get; set; }
+    public int DireccionId { get; set; }
     public Direccion Direccion { get; set; }
 }

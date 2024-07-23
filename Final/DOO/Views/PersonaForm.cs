@@ -1,17 +1,14 @@
-﻿using System;
+﻿using DOO.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DOO.Models;
 using Microsoft.Extensions.DependencyInjection;
-using DOO.Dao;
-using Microsoft.EntityFrameworkCore;
-
 namespace DOO.Views
 {
     public partial class PersonaForm : Form
@@ -37,12 +34,38 @@ namespace DOO.Views
             if (persona == null)
                 MessageBox.Show("Persona no encontrada");
 
-            dataGridView1.DataSource = new List<Models.Persona> { persona };
+            //dataGridView1.DataSource = new List<Models.Persona> { persona};
+            var personas = _persona.GetPersonas(id.ToString());
+
+            // Configurar el DataGridView para mostrar las propiedades de Persona y Direccion
+            var personaDisplayList = personas.Select(p => new
+            {
+                p.Id,
+                p.Nombre,
+                p.Apellido,
+                p.Documento,
+                p.TipoDocumento,
+                p.Telefono,
+                Direccion_Barrio = p.Direccion.Barrio.Nombre,
+                Direccion_Calle = p.Direccion.Calle
+            }).ToList();
+
+            dataGridView1.DataSource = personaDisplayList;
 
         }
 
         private void btnInsertPersona_Click(object sender, EventArgs e)
         {
+            var nuevoBarrio = new Barrio
+            {
+                Nombre = textDireccionPersona.Text,
+                Zona = textZonaPersona.Text
+            };
+            var nuevaDireccion = new Direccion
+            {
+                Barrio = nuevoBarrio,
+                Calle = textCallePersona.Text
+            };
             var nuevaPersona = new Models.Persona
             {
                 Nombre = textNombrePersona.Text,
@@ -50,7 +73,7 @@ namespace DOO.Views
                 Documento = textDocumentoPersona.Text,
                 TipoDocumento = textTipoDocumentoPersona.Text,
                 Telefono = textTelefonoPersona.Text,
-                Direccion = textDireccionPersona.Text
+                Direccion = nuevaDireccion
             };
 
             int result = _persona.InsertPersona(nuevaPersona);
@@ -75,8 +98,22 @@ namespace DOO.Views
         {
             var personas = _persona.GetPersonas();
 
-            dataGridView1.DataSource = personas;
+            // Configurar el DataGridView para mostrar las propiedades de Persona y Direccion
+            var personaDisplayList = personas.Select(p => new
+            {
+                p.Id,
+                p.Nombre,
+                p.Apellido,
+                p.Documento,
+                p.TipoDocumento,
+                p.Telefono,
+                Direccion_Barrio = p.Direccion.Barrio.Nombre,
+                Direccion_Calle = p.Direccion.Calle
+            }).ToList();
+
+            dataGridView1.DataSource = personaDisplayList;
         }
+
 
 
     }

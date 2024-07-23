@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DOO.Dao;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+
 namespace DOO.Models
 {
     public class PersonaDB : IPersona
@@ -60,7 +59,10 @@ namespace DOO.Models
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                return db.Personas.Find(id);
+                return db.Personas
+                         .Include(p => p.Direccion)
+                         .ThenInclude(d => d.Barrio)
+                         .FirstOrDefault(p => p.Id == id);
             }
         }
 
@@ -70,7 +72,25 @@ namespace DOO.Models
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                return db.Personas.ToList();
+                var query = db.Personas.Include(p => p.Direccion).ThenInclude(d => d.Barrio).AsQueryable();
+
+                if (!string.IsNullOrEmpty(nombre))
+                {
+                    query = query.Where(p => p.Nombre.Contains(nombre));
+                }
+
+                // Sort logic
+                if (sortOrder == 1)
+                {
+                    query = query.OrderBy(p => EF.Property<object>(p, sortField));
+                }
+                else
+                {
+                    query = query.OrderByDescending(p => EF.Property<object>(p, sortField));
+                }
+
+                // Paging logic
+                return query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
             }
         }
 
@@ -80,7 +100,7 @@ namespace DOO.Models
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                return db.Personas.ToList();
+                return db.Personas.Include(p => p.Direccion).ThenInclude(d => d.Barrio).ToList();
             }
         }
     }
