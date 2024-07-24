@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Distribuidor.cs" />
+    <Compile Remove="Models\Empleado.cs" />
+    <Compile Remove="Models\Zona.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Managers\" />
   </ItemGroup>
