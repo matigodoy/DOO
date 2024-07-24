@@ -13,12 +13,23 @@
 
         #region Constructores
 
-        //public Producto(string nombre = "Nombre del producto", double precio = 0, int id_producto = 0)
-        //{
-        //    this.Nombre = nombre;
-        //    this.Precio = precio;
-        //    this.Id = id_producto;
-        //}
+
+        public Producto()
+        {
+        }
+
+        public Producto(int id, string nombre, double precio)
+        {
+            Id = id;
+            Nombre = nombre;
+            Precio = precio;
+        }
+
+        public Producto(string nombre, double precio)
+        {
+            Nombre = nombre;
+            Precio = precio;
+        }
 
         #endregion
     }
