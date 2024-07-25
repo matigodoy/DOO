@@ -2,6 +2,7 @@ namespace DOO.Models;
 
 public class Zona
 {
+    public int Id { get; set; }
     public string Nombre { get; set; }
 
     public List<Barrio> Barrios { get; set; }

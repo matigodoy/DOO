@@ -145,13 +145,14 @@ Factura --> FormaPago
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Direccion> Direcciones { get; set; }
         public DbSet<Barrio> Barrios { get; set; }
+
         //public DbSet<Pedido> Pedidos { get; set; }
         //public DbSet<DetallePedido> DetallesPedido { get; set; }
         //public DbSet<Cliente> Clientes { get; set; }
         //public DbSet<Factura> Facturas { get; set; }
         //public DbSet<DetalleFactura> DetallesFactura { get; set; }
         //public DbSet<Empleado> Empleados { get; set; }
-        //public DbSet<Zona> Zonas { get; set; }
+        public DbSet<Zona> Zonas { get; set; }
 
         public DatabaseDbContext()
         {
@@ -202,7 +203,11 @@ Factura --> FormaPago
             modelBuilder.Entity<Barrio>().HasKey(b => b.Id); // Asegurarse de que Barrio tenga una clave primaria
             modelBuilder.Entity<Barrio>().Property(b => b.Id).ValueGeneratedOnAdd(); // Agregar esta línea si falta
             modelBuilder.Entity<Barrio>().Property(b => b.Nombre).IsRequired();
-            modelBuilder.Entity<Barrio>().Property(b => b.Zona).IsRequired();
+
+            modelBuilder.Entity<Zona>().ToTable("Zona");
+            modelBuilder.Entity<Zona>().HasKey(d => d.Id);
+            modelBuilder.Entity<Zona>().Property(d => d.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Zona>().Property(b => b.Nombre).IsRequired();
 
             //modelBuilder.Entity<Pedido>().ToTable("Pedidos");
             //modelBuilder.Entity<Pedido>().HasKey(p => p.Id);

@@ -47,7 +47,8 @@ namespace DOO.Views
                 p.TipoDocumento,
                 p.Telefono,
                 Direccion_Barrio = p.Direccion.Barrio.Nombre,
-                Direccion_Calle = p.Direccion.Calle
+                Direccion_Calle = p.Direccion.Calle,
+                Direccion_Zona = p.Direccion.Barrio.Zona.Nombre
             }).ToList();
 
             dataGridView1.DataSource = personaDisplayList;
@@ -56,10 +57,13 @@ namespace DOO.Views
 
         private void btnInsertPersona_Click(object sender, EventArgs e)
         {
+            var nuevaZona = new Zona             {
+                Nombre = textZonaPersona.Text
+            };
             var nuevoBarrio = new Barrio
             {
                 Nombre = textDireccionPersona.Text,
-                Zona = textZonaPersona.Text
+                Zona = nuevaZona
             };
             var nuevaDireccion = new Direccion
             {
@@ -109,7 +113,7 @@ namespace DOO.Views
                 p.Telefono,
                 Direccion_Barrio = p.Direccion.Barrio.Nombre,
                 Direccion_Calle = p.Direccion.Calle,
-                Direccion_Zona = p.Direccion.Barrio.Zona,
+                Direccion_Zona = p.Direccion.Barrio.Zona.Nombre,
             }).ToList();
 
             dataGridView1.DataSource = personaDisplayList;
