@@ -59,38 +59,33 @@ namespace DOO.Models
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                return db.Personas
-                         .Include(p => p.Direccion)
-                         .ThenInclude(d => d.Barrio)
-                         .FirstOrDefault(p => p.Id == id);
+                return db.Personas.FirstOrDefault(p => p.PersonaId == id);
+
             }
         }
 
-        public List<Persona> GetPersonas(string nombre = "", int pageSize = 10, int pageIndex = 1, string sortField = "nombre", int sortOrder = -1)
+        public List<Persona> GetPersonas(string nombre = "", int pageSize = 10, int pageIndex = 1, string sortField = "Nombre", int sortOrder = -1)
         {
             using (var scope = scopeFactory.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                var query = db.Personas.Include(p => p.Direccion).ThenInclude(d => d.Barrio).AsQueryable();
+                var query = db.Personas.AsQueryable();
 
                 if (!string.IsNullOrEmpty(nombre))
                 {
-                    query = query.Where(p => p.Nombre.Contains(nombre));
+                    query = query.Where(p => p.Nombre.ToLower().Contains(nombre.ToLower()));
                 }
 
-                // Sort logic
-                if (sortOrder == 1)
-                {
-                    query = query.OrderBy(p => EF.Property<object>(p, sortField));
-                }
-                else
+                if (sortOrder == -1)
                 {
                     query = query.OrderByDescending(p => EF.Property<object>(p, sortField));
                 }
-
-                // Paging logic
-                return query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+                else
+                {
+                    query = query.OrderBy(p => EF.Property<object>(p, sortField));
+                }
+                return query.ToList();
             }
         }
 
@@ -100,7 +95,7 @@ namespace DOO.Models
             {
                 var db = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
-                return db.Personas.Include(p => p.Direccion).ThenInclude(d => d.Barrio).ToList();
+                return db.Personas.ToList();
             }
         }
     }

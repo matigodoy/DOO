@@ -1,23 +1,10 @@
 namespace DOO.Models;
-public class Empleado
+public class Empleado : Persona
 {
-    public int Id { get; set; }
     public string Cargo { get; set; }
     public double Salario { get; set; }
-    public List<Distribuidor> Distribuidores { get; set; }
+    public ICollection<Distribuidor> Distribuidores { get; set; }
 
-    public Empleado()
-    {
-        Distribuidores = new List<Distribuidor>();
-    }
-
-    public Empleado(int id, string cargo, double salario)
-    {
-        Id = id;
-        Cargo = cargo;
-        Salario = salario;
-        Distribuidores = new List<Distribuidor>();
-    }
 
     public void AgregarDistribuidor(Distribuidor distribuidor)
     {
@@ -41,17 +28,18 @@ public class Empleado
 
     public override bool Equals(object obj)
     {
-        if (obj is Empleado)
+        if (obj == null || GetType() != obj.GetType())
         {
-            Empleado empleado = (Empleado)obj;
-            return empleado.Id == Id;
+            return false;
         }
-        return false;
+
+        Empleado e = (Empleado)obj;
+        return PersonaId == e.PersonaId;
     }
 
     public override int GetHashCode()
     {
-        return Id;
+        return PersonaId;
     }
 
     public void ActualizarCargo(string cargo)

@@ -2,21 +2,10 @@ namespace DOO.Models;
 
 public class Barrio
 {
-    public int Id { get; set; }
+    public int BarrioId { get; set; }
+    public int ZonaId { get; set; }
     public string Nombre { get; set; }
-    public List<Direccion> Direcciones { get; set; }
-
-    public Barrio()
-    {
-        Direcciones = new List<Direccion>();
-    }
-
-    public Barrio(int id, string nombre)
-    {
-        Id = id;
-        Nombre = nombre;
-        Direcciones = new List<Direccion>();
-    }
+    public ICollection<Direccion> Direcciones { get; set; }
 
     public void AgregarDireccion(Direccion direccion)
     {

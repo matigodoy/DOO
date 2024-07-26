@@ -8,48 +8,9 @@ namespace DOO.Models
 {
     public class Cliente
     {
-        public int Id { get; set; }
-        public Pedido Pedido { get; set; }
+        public int ClienteId { get; set; }
         public string RazonSocial { get; set; }
         public string Direccion { get; set; }
-
-        public Cliente(Pedido pedido, string razonSocial, string direccion, int id)
-        {
-            Pedido = pedido;
-            RazonSocial = razonSocial;
-            Direccion = direccion;
-            Id = id;
-        }
-
-        public Cliente() { }
-
-        public Cliente(string razonSocial, string direccion)
-        {
-            RazonSocial = razonSocial;
-            Direccion = direccion;
-        }
-
-        public Cliente(string razonSocial)
-        {
-            RazonSocial = razonSocial;
-        }
-
-        public Cliente(string razonSocial, string direccion, Pedido pedido)
-        {
-            RazonSocial = razonSocial;
-            Direccion = direccion;
-            Pedido = pedido;
-        }
-
-        public Cliente(string razonSocial, Pedido pedido)
-        {
-            RazonSocial = razonSocial;
-            Pedido = pedido;
-        }
-
-        public Cliente(Pedido pedido)
-        {
-            Pedido = pedido;
-        }
+        public ICollection<Pedido> Pedidos { get; set; }
     }
 }
