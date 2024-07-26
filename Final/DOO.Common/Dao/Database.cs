@@ -47,8 +47,8 @@ namespace DOO.Common.Dao
 
             // Creación de datos de prueba
             modelBuilder.Entity<Cliente>().HasData(
-                new Cliente { ClienteId = 1, RazonSocial = "Soluciones moviles SRL", Direccion = "Av. Patria 5000" },
-                new Cliente { ClienteId = 2, RazonSocial = "Torneria Jorge SA", Direccion = "Donato Alvarez 202" }
+                new Cliente { PersonaId = 13486, ClienteId = 2, RazonSocial = "Soluciones moviles SRL", Direccion = "Av. Patria 5000", TipoDocumento = "DNI", NumeroDocumento = "866", Nombre = "Matias", Apellido = "Godoy", Telefono = "3511234567", DireccionId = 1 },
+                new Cliente { PersonaId = 20489, ClienteId = 1, RazonSocial = "Torneria Jorge SA", Direccion = "Donato Alvarez 202", TipoDocumento = "DNI", NumeroDocumento = "453466", Nombre = "Jesus", Apellido = "Oliveto", Telefono = "3511234567", DireccionId = 1 }
             );
             modelBuilder.Entity<Zona>().HasData(
                 new Zona { ZonaId = 1, Nombre = "Zona Norte" },

@@ -1,20 +1,18 @@
 using DOO.Models;
 using DOO.Store.Data;
+using DOO.Views;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DOO
 {
-    public partial class Home : Form
+    public partial class ProductosForm : Form
     {
         private readonly ProductosStore _productosStore;
 
-        public Home()
+        public ProductosForm()
         {
             InitializeComponent();
-
             _productosStore = Program.ServiceProvider.GetRequiredService<ProductosStore>();
-
-
         }
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -66,6 +64,19 @@ namespace DOO
             }
 
             GetProductos();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            HomeForm form = new HomeForm();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

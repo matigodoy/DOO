@@ -34,10 +34,8 @@
             textNombrePersona = new TextBox();
             dataGridView1 = new DataGridView();
             textApellidoPersona = new TextBox();
-            textDocumentoPersona = new TextBox();
             textTipoDocumentoPersona = new TextBox();
             textTelefonoPersona = new TextBox();
-            textDireccionPersona = new TextBox();
             label1 = new Label();
             label2 = new Label();
             textCallePersona = new TextBox();
@@ -46,10 +44,13 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            textZonaPersona = new TextBox();
             label8 = new Label();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            cbZona = new ComboBox();
+            cbBarrios = new ComboBox();
+            textDocumentoPersona = new TextBox();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -79,6 +80,7 @@
             // 
             textBuscarPersona.Location = new Point(21, 49);
             textBuscarPersona.Name = "textBuscarPersona";
+            textBuscarPersona.PlaceholderText = "Escribe un nombre para buscar...";
             textBuscarPersona.Size = new Size(262, 23);
             textBuscarPersona.TabIndex = 1;
             textBuscarPersona.TextChanged += textBuscarPersona_TextChanged;
@@ -87,13 +89,14 @@
             // 
             textNombrePersona.Location = new Point(21, 54);
             textNombrePersona.Name = "textNombrePersona";
+            textNombrePersona.PlaceholderText = "Ej: Lucas";
             textNombrePersona.Size = new Size(169, 23);
             textNombrePersona.TabIndex = 3;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(481, 21);
+            dataGridView1.Location = new Point(475, 53);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(612, 447);
             dataGridView1.TabIndex = 4;
@@ -103,20 +106,15 @@
             // 
             textApellidoPersona.Location = new Point(220, 54);
             textApellidoPersona.Name = "textApellidoPersona";
+            textApellidoPersona.PlaceholderText = "Ej: Martinez";
             textApellidoPersona.Size = new Size(169, 23);
             textApellidoPersona.TabIndex = 4;
-            // 
-            // textDocumentoPersona
-            // 
-            textDocumentoPersona.Location = new Point(220, 108);
-            textDocumentoPersona.Name = "textDocumentoPersona";
-            textDocumentoPersona.Size = new Size(169, 23);
-            textDocumentoPersona.TabIndex = 6;
             // 
             // textTipoDocumentoPersona
             // 
             textTipoDocumentoPersona.Location = new Point(21, 109);
             textTipoDocumentoPersona.Name = "textTipoDocumentoPersona";
+            textTipoDocumentoPersona.PlaceholderText = "Ej: DNI";
             textTipoDocumentoPersona.Size = new Size(169, 23);
             textTipoDocumentoPersona.TabIndex = 5;
             // 
@@ -124,15 +122,9 @@
             // 
             textTelefonoPersona.Location = new Point(21, 165);
             textTelefonoPersona.Name = "textTelefonoPersona";
+            textTelefonoPersona.PlaceholderText = "Celular personal";
             textTelefonoPersona.Size = new Size(169, 23);
             textTelefonoPersona.TabIndex = 7;
-            // 
-            // textDireccionPersona
-            // 
-            textDireccionPersona.Location = new Point(220, 165);
-            textDireccionPersona.Name = "textDireccionPersona";
-            textDireccionPersona.Size = new Size(169, 23);
-            textDireccionPersona.TabIndex = 8;
             // 
             // label1
             // 
@@ -204,13 +196,6 @@
             label7.TabIndex = 17;
             label7.Text = "Apellido";
             // 
-            // textZonaPersona
-            // 
-            textZonaPersona.Location = new Point(220, 224);
-            textZonaPersona.Name = "textZonaPersona";
-            textZonaPersona.Size = new Size(169, 23);
-            textZonaPersona.TabIndex = 10;
-            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -224,21 +209,22 @@
             // 
             groupBox1.Controls.Add(btnGetPersona);
             groupBox1.Controls.Add(textBuscarPersona);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(6, 44);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(463, 109);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Búsqueda de personas";
+            groupBox1.Text = "Búsqueda de clientes";
             groupBox1.Enter += groupBox1_Enter;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(cbZona);
+            groupBox2.Controls.Add(cbBarrios);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(btnInsertPersona);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(textNombrePersona);
-            groupBox2.Controls.Add(textZonaPersona);
             groupBox2.Controls.Add(textApellidoPersona);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(textDocumentoPersona);
@@ -246,28 +232,64 @@
             groupBox2.Controls.Add(label5);
             groupBox2.Controls.Add(textTelefonoPersona);
             groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(textDireccionPersona);
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(textCallePersona);
             groupBox2.Controls.Add(label2);
-            groupBox2.Location = new Point(12, 139);
+            groupBox2.Location = new Point(6, 171);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(463, 329);
             groupBox2.TabIndex = 21;
             groupBox2.TabStop = false;
             groupBox2.Text = "Persona";
             // 
+            // cbZona
+            // 
+            cbZona.FormattingEnabled = true;
+            cbZona.Location = new Point(220, 224);
+            cbZona.Name = "cbZona";
+            cbZona.Size = new Size(169, 23);
+            cbZona.TabIndex = 10;
+            // 
+            // cbBarrios
+            // 
+            cbBarrios.FormattingEnabled = true;
+            cbBarrios.Location = new Point(220, 165);
+            cbBarrios.Name = "cbBarrios";
+            cbBarrios.Size = new Size(169, 23);
+            cbBarrios.TabIndex = 8;
+            cbBarrios.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // textDocumentoPersona
+            // 
+            textDocumentoPersona.Location = new Point(220, 108);
+            textDocumentoPersona.Name = "textDocumentoPersona";
+            textDocumentoPersona.PlaceholderText = "EJ: 453345676";
+            textDocumentoPersona.Size = new Size(169, 23);
+            textDocumentoPersona.TabIndex = 6;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(6, 17);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(63, 15);
+            linkLabel1.TabIndex = 22;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "< Regresar";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // PersonaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1109, 487);
+            ClientSize = new Size(1099, 510);
+            Controls.Add(linkLabel1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridView1);
             Name = "PersonaForm";
-            Text = "Persona";
+            Text = "Clientes";
             Load += PersonaForm_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
@@ -275,6 +297,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -285,10 +308,8 @@
         private TextBox textNombrePersona;
         private DataGridView dataGridView1;
         private TextBox textApellidoPersona;
-        private TextBox textDocumentoPersona;
         private TextBox textTipoDocumentoPersona;
         private TextBox textTelefonoPersona;
-        private TextBox textDireccionPersona;
         private Label label1;
         private Label label2;
         private TextBox textCallePersona;
@@ -297,9 +318,12 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox textZonaPersona;
         private Label label8;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private ComboBox cbBarrios;
+        private TextBox textDocumentoPersona;
+        private ComboBox cbZona;
+        private LinkLabel linkLabel1;
     }
 }

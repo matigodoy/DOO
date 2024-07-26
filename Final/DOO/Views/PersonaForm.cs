@@ -6,39 +6,23 @@ namespace DOO.Views
     public partial class PersonaForm : Form
     {
         private readonly PersonaDB _persona;
+        private readonly ClienteDB _cliente;
+        private readonly DireccionDB _direccion;
         public PersonaForm()
         {
             InitializeComponent();
             _persona = Program.ServiceProvider.GetRequiredService<PersonaDB>();
+            _cliente = Program.ServiceProvider.GetRequiredService<ClienteDB>();
+            _direccion = Program.ServiceProvider.GetRequiredService<DireccionDB>();
         }
 
         private void btnGetPersona_Click(object sender, EventArgs e)
         {
-            //if (String.IsNullOrEmpty(textBuscarPersona.Text))
-            //{
-            //    MessageBox.Show("Ingrese un id de persona");
-            //    return;
-            //}
-
             string nombre = textBuscarPersona.Text;
-            var personas = _persona.GetPersonas(nombre);
+            var personas = _cliente.GetClientes(nombre);
 
             if (personas == null)
                 MessageBox.Show("No hay resultados");
-
-            //dataGridView1.DataSource = new List<Models.Persona> { persona};
-            //var personas = _persona.GetPersonas(id.ToString());
-
-            // Configurar el DataGridView para mostrar las propiedades de Persona y Direccion
-            //var personaDisplayList = personas.Select(p => new
-            //{
-            //    p.PersonaId,
-            //    p.Nombre,
-            //    p.Apellido,
-            //    p.NumeroDocumento,
-            //    p.TipoDocumento,
-            //    p.Telefono
-            //}).ToList();
 
             dataGridView1.DataSource = personas;
 
@@ -46,10 +30,7 @@ namespace DOO.Views
 
         private void btnInsertPersona_Click(object sender, EventArgs e)
         {
-            var nuevoBarrio = new Barrio
-            {
-                Nombre = textDireccionPersona.Text,
-            };
+
             var nuevaDireccion = new Direccion
             {
                 DireccionTexto = textCallePersona.Text
@@ -61,6 +42,7 @@ namespace DOO.Views
                 NumeroDocumento = textDocumentoPersona.Text,
                 TipoDocumento = textTipoDocumentoPersona.Text,
                 Telefono = textTelefonoPersona.Text,
+                DireccionId = _direccion.InsertDireccion(nuevaDireccion),
             };
 
             int result = _persona.InsertPersona(nuevaPersona);
@@ -79,23 +61,12 @@ namespace DOO.Views
         private async void PersonaForm_Load(object sender, EventArgs e)
         {
             GetPersonas();
+            textBuscarPersona.Focus();
         }
 
         private void GetPersonas()
         {
-            var personas = _persona.GetPersonas();
-
-            // Configurar el DataGridView para mostrar las propiedades de Persona y Direccion
-            //var personaDisplayList = personas.Select(p => new
-            //{
-            //    p.PersonaId,
-            //    p.Nombre,
-            //    p.Apellido,
-            //    p.NumeroDocumento,
-            //    p.TipoDocumento,
-            //    p.Telefono,
-            //}).ToList();
-
+            var personas = _cliente.GetClientes();
             dataGridView1.DataSource = personas;
         }
 
@@ -107,6 +78,9 @@ namespace DOO.Views
         private void PersonaForm_Load_1(object sender, EventArgs e)
         {
             GetPersonas();
+            textBuscarPersona.Focus();
+            LoadComboBoxBarrios();
+            LoadComboBoxZonas();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -117,6 +91,36 @@ namespace DOO.Views
         private void textBuscarPersona_TextChanged(object sender, EventArgs e)
         {
             btnGetPersona_Click(sender, e);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadComboBoxBarrios()
+        {
+            var barrios = _direccion.GetBarrios();
+            cbBarrios.DataSource = barrios;
+            cbBarrios.DisplayMember = "Nombre";
+            cbBarrios.ValueMember = "BarrioId";
+        }
+
+        private void LoadComboBoxZonas()
+        {
+            var zonas = _direccion.GetZonas();
+            cbZona.DataSource = zonas;
+            cbZona.DisplayMember = "Nombre";
+            cbZona.ValueMember = "ZonaId";
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Regresar al home
+            this.Hide();
+            HomeForm form = new HomeForm();
+            form.ShowDialog();
+            this.Close();
         }
     }
 }

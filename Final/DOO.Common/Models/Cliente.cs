@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DOO.Models
 {
-    public class Cliente
+    public class Cliente : Persona
     {
         public int ClienteId { get; set; }
         public string RazonSocial { get; set; }

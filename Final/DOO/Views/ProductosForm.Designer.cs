@@ -1,6 +1,6 @@
 ﻿namespace DOO
 {
-    partial class Home
+    partial class ProductosForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,13 +29,18 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            Editar = new DataGridViewImageColumn();
+            Eliminar = new DataGridViewImageColumn();
             txtProductoId = new TextBox();
             btnGetProducto = new Button();
             txtNombre = new TextBox();
             btnInsertProducto = new Button();
-            Editar = new DataGridViewImageColumn();
-            Eliminar = new DataGridViewImageColumn();
+            linkLabel1 = new LinkLabel();
+            groupBox1 = new GroupBox();
+            groupBox2 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView1
@@ -45,51 +50,13 @@
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Editar, Eliminar });
-            dataGridView1.Location = new Point(34, 368);
+            dataGridView1.Location = new Point(469, 57);
             dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(751, 136);
+            dataGridView1.Size = new Size(764, 439);
             dataGridView1.TabIndex = 0;
-            // 
-            // txtProductoId
-            // 
-            txtProductoId.Location = new Point(122, 118);
-            txtProductoId.Margin = new Padding(3, 2, 3, 2);
-            txtProductoId.Name = "txtProductoId";
-            txtProductoId.Size = new Size(359, 23);
-            txtProductoId.TabIndex = 1;
-            // 
-            // btnGetProducto
-            // 
-            btnGetProducto.Location = new Point(528, 115);
-            btnGetProducto.Margin = new Padding(3, 2, 3, 2);
-            btnGetProducto.Name = "btnGetProducto";
-            btnGetProducto.Size = new Size(248, 26);
-            btnGetProducto.TabIndex = 2;
-            btnGetProducto.Text = "Obtener";
-            btnGetProducto.UseVisualStyleBackColor = true;
-            btnGetProducto.Click += btnGetProducto_Click_1;
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(88, 230);
-            txtNombre.Margin = new Padding(3, 2, 3, 2);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(432, 23);
-            txtNombre.TabIndex = 3;
-            // 
-            // btnInsertProducto
-            // 
-            btnInsertProducto.Location = new Point(538, 230);
-            btnInsertProducto.Margin = new Padding(3, 2, 3, 2);
-            btnInsertProducto.Name = "btnInsertProducto";
-            btnInsertProducto.Size = new Size(82, 22);
-            btnInsertProducto.TabIndex = 4;
-            btnInsertProducto.Text = "Crear";
-            btnInsertProducto.UseVisualStyleBackColor = true;
-            btnInsertProducto.Click += btnInsertProducto_Click;
             // 
             // Editar
             // 
@@ -106,21 +73,96 @@
             Eliminar.Name = "Eliminar";
             Eliminar.ReadOnly = true;
             // 
-            // Home
+            // txtProductoId
+            // 
+            txtProductoId.Location = new Point(15, 33);
+            txtProductoId.Margin = new Padding(3, 2, 3, 2);
+            txtProductoId.Name = "txtProductoId";
+            txtProductoId.Size = new Size(245, 23);
+            txtProductoId.TabIndex = 1;
+            // 
+            // btnGetProducto
+            // 
+            btnGetProducto.Location = new Point(266, 33);
+            btnGetProducto.Margin = new Padding(3, 2, 3, 2);
+            btnGetProducto.Name = "btnGetProducto";
+            btnGetProducto.Size = new Size(120, 26);
+            btnGetProducto.TabIndex = 2;
+            btnGetProducto.Text = "Buscar";
+            btnGetProducto.UseVisualStyleBackColor = true;
+            btnGetProducto.Click += btnGetProducto_Click_1;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Location = new Point(15, 48);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(272, 23);
+            txtNombre.TabIndex = 3;
+            // 
+            // btnInsertProducto
+            // 
+            btnInsertProducto.Location = new Point(332, 155);
+            btnInsertProducto.Margin = new Padding(3, 2, 3, 2);
+            btnInsertProducto.Name = "btnInsertProducto";
+            btnInsertProducto.Size = new Size(82, 22);
+            btnInsertProducto.TabIndex = 4;
+            btnInsertProducto.Text = "Crear";
+            btnInsertProducto.UseVisualStyleBackColor = true;
+            btnInsertProducto.Click += btnInsertProducto_Click;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(12, 9);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(63, 15);
+            linkLabel1.TabIndex = 23;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "< Regresar";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(txtProductoId);
+            groupBox1.Controls.Add(btnGetProducto);
+            groupBox1.Location = new Point(34, 48);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(420, 80);
+            groupBox1.TabIndex = 24;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Búsqueda por nombre";
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(btnInsertProducto);
+            groupBox2.Controls.Add(txtNombre);
+            groupBox2.Location = new Point(34, 134);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(420, 182);
+            groupBox2.TabIndex = 25;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Formulario de creación/edición";
+            groupBox2.Enter += groupBox2_Enter;
+            // 
+            // ProductosForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(852, 560);
-            Controls.Add(btnInsertProducto);
-            Controls.Add(txtNombre);
-            Controls.Add(btnGetProducto);
-            Controls.Add(txtProductoId);
+            ClientSize = new Size(1245, 560);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(linkLabel1);
             Controls.Add(dataGridView1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Home";
-            Text = "Form1";
+            Name = "ProductosForm";
+            Text = "Productos";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,5 +176,8 @@
         private Button btnInsertProducto;
         private DataGridViewImageColumn Editar;
         private DataGridViewImageColumn Eliminar;
+        private LinkLabel linkLabel1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }

@@ -28,8 +28,8 @@ namespace DOO
             DatabaseDbContext juan = new DatabaseDbContext();
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new Home());
-            Application.Run(new PersonaForm());
+            Application.Run(new Login());
+            //Application.Run(new PersonaForm());
         }
 
         private static void ConfigureServices(IServiceCollection services)
@@ -43,7 +43,8 @@ namespace DOO
             services.AddScoped<IProducto, ProductosStore>();
             services.AddScoped<ProductosStore>();
             services.AddScoped<PersonaDB>();
-            services.AddScoped<Direccion>();
+            services.AddScoped<DireccionDB>();
+            services.AddScoped<ClienteDB>();
         }
     }
 }
