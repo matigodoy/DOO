@@ -1,6 +1,6 @@
 ﻿using DOO.Models;
 
-namespace DOO.Dao
+namespace DOO.Store.Data
 {
     public interface IProducto
     {

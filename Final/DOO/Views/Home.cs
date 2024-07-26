@@ -1,5 +1,5 @@
-using DOO.Dao;
 using DOO.Models;
+using DOO.Store.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DOO

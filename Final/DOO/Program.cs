@@ -1,5 +1,7 @@
-using DOO.Dao;
+using DOO.Manager;
+using DOO.Common.Dao;
 using DOO.Models;
+using DOO.Store.Data;
 using DOO.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -40,7 +42,6 @@ namespace DOO
 
             services.AddScoped<IProducto, ProductosStore>();
             services.AddScoped<ProductosStore>();
-            services.AddScoped<IPersona, PersonaDB>();
             services.AddScoped<PersonaDB>();
             services.AddScoped<Direccion>();
         }

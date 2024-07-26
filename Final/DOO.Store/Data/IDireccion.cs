@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DOO.Models;
 
-namespace DOO.Dao
+namespace DOO.Store.Data
 {
     internal interface IDireccion
     {

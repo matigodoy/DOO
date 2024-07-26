@@ -1,4 +1,6 @@
-﻿using DOO.Dao;
+﻿using DOO.Common.Dao;
+using DOO.Models;
+using DOO.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -7,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DOO.Models
+namespace DOO.Store.Data
 {
     public class ProductosStore : IProducto
     {

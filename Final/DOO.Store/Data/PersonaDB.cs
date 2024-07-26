@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DOO.Dao;
+using DOO.Common.Dao;
+using DOO.Models;
+using DOO.Store;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DOO.Models
+namespace DOO.Store.Data
 {
     public class PersonaDB : IPersona
     {

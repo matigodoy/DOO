@@ -1,4 +1,5 @@
 ﻿using DOO.Models;
+using DOO.Store.Data;
 using Microsoft.Extensions.DependencyInjection;
 namespace DOO.Views
 {
