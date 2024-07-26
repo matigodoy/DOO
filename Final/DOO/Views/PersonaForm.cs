@@ -59,7 +59,6 @@ namespace DOO.Views
             var nuevoBarrio = new Barrio
             {
                 Nombre = textDireccionPersona.Text,
-                Zona = textZonaPersona.Text
             };
             var nuevaDireccion = new Direccion
             {
@@ -109,7 +108,7 @@ namespace DOO.Views
                 p.Telefono,
                 Direccion_Barrio = p.Direccion.Barrio.Nombre,
                 Direccion_Calle = p.Direccion.Calle,
-                Direccion_Zona = p.Direccion.Barrio.Zona,
+                Direccion_Zona = "XD",
             }).ToList();
 
             dataGridView1.DataSource = personaDisplayList;

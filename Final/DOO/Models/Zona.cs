@@ -2,6 +2,7 @@ namespace DOO.Models;
 
 public class Zona
 {
+    public int Id { get; set; }
     public string Nombre { get; set; }
 
     public List<Barrio> Barrios { get; set; }
@@ -11,10 +12,11 @@ public class Zona
         Barrios = new List<Barrio>();
     }
 
-    public Zona(string nombre)
+    public Zona(string nombre, int id)
     {
         Nombre = nombre;
         Barrios = new List<Barrio>();
+        Id = id;
     }
 
     public void AgregarBarrio(Barrio barrio)

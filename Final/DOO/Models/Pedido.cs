@@ -9,6 +9,7 @@ namespace DOO.Models
     public class Pedido
     {
         public int Id { get; set; }
+        public int ClienteId { get; set; }
         public Cliente Cliente { get; set; }
         public List<DetallePedido> Detalles { get; set; }
         public string Fecha { get; set; }
@@ -16,6 +17,7 @@ namespace DOO.Models
         public string Estado { get; set; }
         public string FechaHoraEntregaEstimada { get; set; }
         public string FechaHoraEntregaReal { get; set; }
+
         public void posponerPedido(string fecha)
         {
             this.FechaHoraEntregaEstimada = fecha;

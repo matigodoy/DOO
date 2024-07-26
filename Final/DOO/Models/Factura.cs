@@ -8,9 +8,14 @@ namespace DOO.Models
 {
     public class Factura
     {
+        public int Id { get; set; }
+        public int PedidoId { get; set; }
+        public int EmpleadoId { get; set; }
+        public int ClienteId { get; set; }
         public Pedido Pedido { get; set; }
         public Empleado Empleado { get; set; }
         public Cliente Cliente { get; set; }
+        public List<DetalleFactura> Detalles { get; set; }
         public string Fecha { get; set; }
         public double Total { get; set; }
 
@@ -36,6 +41,16 @@ namespace DOO.Models
             {
                 throw new Exception("No se puede registrar una factura sin un total");
             }
+        }
+
+        public Factura(Pedido pedido, Empleado empleado, Cliente cliente, string fecha, double total, int id)
+        {
+            Pedido = pedido;
+            Empleado = empleado;
+            Cliente = cliente;
+            Fecha = fecha;
+            Total = total;
+            Id = id;
         }
 
         public Factura(Pedido pedido, Empleado empleado, Cliente cliente, string fecha, double total)

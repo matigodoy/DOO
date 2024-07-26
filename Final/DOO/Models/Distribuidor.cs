@@ -2,13 +2,17 @@ namespace DOO.Models;
 
 public class Distribuidor
 {
+    public int Id { get; set; }
+    public int EmpleadoId { get; set; }
+    public int ZonaId { get; set; }
     public Empleado Empleado { get; set; }
     public Zona Zona { get; set; }
 
-    public Distribuidor(Empleado empleado, Zona zona)
+    public Distribuidor(Empleado empleado, Zona zona, int id)
     {
         Empleado = empleado;
         Zona = zona;
+        Id = id;
     }
 
     public Distribuidor() { }
