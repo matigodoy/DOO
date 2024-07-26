@@ -36,7 +36,7 @@ namespace DOO.Views
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PedidosForm form = new PedidosForm();
+            Pedidos form = new Pedidos();
             form.ShowDialog();
             this.Close();
         }

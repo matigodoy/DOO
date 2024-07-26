@@ -5,7 +5,6 @@ using DOO.Store.Data;
 using DOO.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System.Reflection;
 
 namespace DOO
@@ -45,6 +44,7 @@ namespace DOO
             services.AddScoped<PersonaDB>();
             services.AddScoped<DireccionDB>();
             services.AddScoped<ClienteDB>();
+            services.AddScoped<PedidoDB>();
         }
     }
 }
